@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	handle_input()
+	lean_in_wish_dir(delta)
 	move_and_slide()
 
 func apply_gravity(delta) -> void:
@@ -101,6 +102,14 @@ func handle_input():
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 	
+
+
+func lean_in_wish_dir(delta : float):
+	if wish_dir:
+		rotation_degrees = move_toward(rotation_degrees, wish_dir * 10, acceleration)
+	else:
+		rotation_degrees = move_toward(rotation_degrees, 0, deceleration)
+	pass
 	
 func light_fade(delta: float) -> void:
 	if point_light.texture_scale <= 0:

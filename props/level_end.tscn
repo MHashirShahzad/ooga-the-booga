@@ -9,6 +9,7 @@ radius = 128.472
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lp4tp"]
 gradient = SubResource("Gradient_jl4oc")
+fill_to = Vector2(1, 0.821101)
 
 [node name="LevelEnd" type="Area2D"]
 script = ExtResource("1_lp4tp")
