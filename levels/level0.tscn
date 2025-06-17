@@ -172,6 +172,13 @@ shadow_enabled = true
 texture = ExtResource("7_3vj3r")
 texture_scale = 21.25
 
+[node name="Label" type="Label" parent="."]
+offset_left = 4945.0
+offset_top = 330.0
+offset_right = 4985.0
+offset_bottom = 353.0
+text = "THE END FOR NOW :>"
+
 [editable path="LevelBuilder"]
 [editable path="LevelBuilder2"]
 [editable path="LevelBuilder3"]

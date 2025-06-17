@@ -106,9 +106,9 @@ func handle_input():
 
 func lean_in_wish_dir(delta : float):
 	if wish_dir:
-		rotation_degrees = move_toward(rotation_degrees, wish_dir * 10, acceleration)
+		rotation_degrees = move_toward(rotation_degrees, wish_dir * 10, acceleration / 4)
 	else:
-		rotation_degrees = move_toward(rotation_degrees, 0, deceleration)
+		rotation_degrees = move_toward(rotation_degrees, 0, deceleration / 2)
 	pass
 	
 func light_fade(delta: float) -> void:
@@ -119,9 +119,7 @@ func light_fade(delta: float) -> void:
 
 # Squash on land for cute effects :)
 func squash():
-	# nullifies slopess
-	if land_velocity < 200:
-		return
+
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite_2d, "scale",squashed_size, .1).set_trans(Tween.TRANS_QUAD)
 	#tween.tween_property(silhouette_sprite, "scale",squashed_size, .1).set_trans(Tween.TRANS_QUAD)
