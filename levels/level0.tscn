@@ -1,0 +1,179 @@
+[gd_scene load_steps=14 format=3 uid="uid://bfm6f2bo47cn8"]
+
+[ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_rqr14"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_2etfj"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_4kw1h"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_3vj3r"]
+[ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="5_2etfj"]
+[ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="5_4kw1h"]
+[ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="7_3vj3r"]
+
+[sub_resource type="Resource" id="Resource_p8yh6"]
+script = ExtResource("4_3vj3r")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3vj3r"]
+polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p8yh6"]
+polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w2q2b"]
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f811g"]
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3act"]
+polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
+
+[node name="Level0" type="Node2D"]
+
+[node name="LevelEssentials" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="LevelEssentials"]
+z_index = -1
+offset_left = -1669.0
+offset_top = -1700.0
+offset_right = 28331.0
+offset_bottom = 18300.0
+color = Color(0.360784, 0.356863, 0.356863, 1)
+
+[node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_rqr14")]
+position = Vector2(1785, 1454)
+
+[node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
+color = Color(0.0509804, 0.054902, 0.0392157, 1)
+
+[node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
+physics_interpolation_mode = 1
+position = Vector2(1785, 1454)
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="LevelEssentials/Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_2etfj")
+
+[node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(1785, 1454)
+script = ExtResource("3_4kw1h")
+follow_mode = 5
+follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(0.8, 0.8)
+tween_resource = SubResource("Resource_p8yh6")
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+dead_zone_width = 0.1
+dead_zone_height = 0.1
+_preview_noise = false
+
+[node name="Fuel" parent="." instance=ExtResource("5_4kw1h")]
+position = Vector2(1132, 1941)
+fuel_amount = 2.0
+is_self_destruct = false
+
+[node name="Fuel2" parent="." instance=ExtResource("5_4kw1h")]
+position = Vector2(4039, 1543)
+fuel_amount = 3.0
+is_self_destruct = false
+
+[node name="LevelBuilder" parent="." instance=ExtResource("5_2etfj")]
+position = Vector2(2124, 2479)
+
+[node name="CollisionPolygon2D" parent="LevelBuilder" index="0"]
+polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
+
+[node name="Polygon2D" parent="LevelBuilder" index="1"]
+polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
+
+[node name="LightOccluder2D" parent="LevelBuilder" index="2"]
+occluder = SubResource("OccluderPolygon2D_3vj3r")
+
+[node name="LevelBuilder2" parent="." instance=ExtResource("5_2etfj")]
+position = Vector2(2124, 2479)
+
+[node name="CollisionPolygon2D" parent="LevelBuilder2" index="0"]
+polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
+
+[node name="Polygon2D" parent="LevelBuilder2" index="1"]
+polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
+
+[node name="LightOccluder2D" parent="LevelBuilder2" index="2"]
+occluder = SubResource("OccluderPolygon2D_p8yh6")
+
+[node name="LevelBuilder3" parent="." instance=ExtResource("5_2etfj")]
+position = Vector2(2124, 2479)
+
+[node name="CollisionPolygon2D" parent="LevelBuilder3" index="0"]
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
+
+[node name="Polygon2D" parent="LevelBuilder3" index="1"]
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
+
+[node name="LightOccluder2D" parent="LevelBuilder3" index="2"]
+occluder = SubResource("OccluderPolygon2D_w2q2b")
+
+[node name="LevelBuilder5" parent="." instance=ExtResource("5_2etfj")]
+position = Vector2(2124, 2479)
+
+[node name="CollisionPolygon2D" parent="LevelBuilder5" index="0"]
+position = Vector2(-1999, -899)
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
+
+[node name="Polygon2D" parent="LevelBuilder5" index="1"]
+position = Vector2(-1999, -899)
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
+
+[node name="LightOccluder2D" parent="LevelBuilder5" index="2"]
+position = Vector2(-1999, -899)
+occluder = SubResource("OccluderPolygon2D_f811g")
+
+[node name="LevelBuilder4" parent="." instance=ExtResource("5_2etfj")]
+position = Vector2(2279, 2307)
+
+[node name="CollisionPolygon2D" parent="LevelBuilder4" index="0"]
+position = Vector2(467, -361)
+polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
+
+[node name="Polygon2D" parent="LevelBuilder4" index="1"]
+position = Vector2(467, -361)
+polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
+
+[node name="LightOccluder2D" parent="LevelBuilder4" index="2"]
+position = Vector2(467, -361)
+occluder = SubResource("OccluderPolygon2D_f3act")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1756, 1943)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.39
+shadow_enabled = true
+texture = ExtResource("7_3vj3r")
+texture_scale = 10.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(4171, 860)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.39
+shadow_enabled = true
+texture = ExtResource("7_3vj3r")
+texture_scale = 10.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(1527, -713)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.1
+shadow_enabled = true
+texture = ExtResource("7_3vj3r")
+texture_scale = 21.25
+
+[editable path="LevelBuilder"]
+[editable path="LevelBuilder2"]
+[editable path="LevelBuilder3"]
+[editable path="LevelBuilder5"]
+[editable path="LevelBuilder4"]

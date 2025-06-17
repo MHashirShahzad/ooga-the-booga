@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3vddyjiubpxk"]
+
+[ext_resource type="Script" uid="uid://bm64sjo41w6oy" path="res://props/level_builder.gd" id="1_4crga"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dm8ts"]
+
+[node name="LevelBuilder" type="StaticBody2D" node_paths=PackedStringArray("light_occluder_2d", "collision_polygon_2d", "polygon_2d")]
+script = ExtResource("1_4crga")
+light_occluder_2d = NodePath("LightOccluder2D")
+collision_polygon_2d = NodePath("CollisionPolygon2D")
+polygon_2d = NodePath("Polygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.560784, 0.556863, 0.541176, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_dm8ts")

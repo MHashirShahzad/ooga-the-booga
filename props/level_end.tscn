@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://br8vpoqj66uy4"]
+
+[ext_resource type="Script" uid="uid://c2j8tu12fuily" path="res://props/level_end.gd" id="1_lp4tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jb1k"]
+radius = 128.472
+
+[sub_resource type="Gradient" id="Gradient_jl4oc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lp4tp"]
+gradient = SubResource("Gradient_jl4oc")
+
+[node name="LevelEnd" type="Area2D"]
+script = ExtResource("1_lp4tp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5jb1k")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.32549, 1, 1, 1)
+texture = SubResource("GradientTexture2D_lp4tp")
