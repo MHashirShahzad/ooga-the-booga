@@ -67,7 +67,8 @@ func _physics_process(delta: float) -> void:
 			if land_velocity >= ground_pound_velocity:
 				super_jump_timer = super_jump_time
 				# dust particles :P
-				VFXManager.add_vfx(LAND_VFX, $VFXSpawnLocation)
+				VFXManager.add_vfx(LAND_VFX, $VFXSpawnLocation.global_position)
+				print("[Player]: ",$VFXSpawnLocation.global_position)
 			squash()
 		is_on_ground = true
 	else:

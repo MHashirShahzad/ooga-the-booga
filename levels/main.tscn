@@ -29,7 +29,7 @@ offset_bottom = 18300.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_m1504")]
-position = Vector2(560, 293)
+position = Vector2(776, 328)
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 position = Vector2(548, 551)
@@ -77,7 +77,7 @@ position = Vector2(1036, 296)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(560, 293)
+position = Vector2(776, 328)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 
@@ -88,7 +88,7 @@ script = ExtResource("5_qy63d")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(560, 293)
+position = Vector2(776, 328)
 script = ExtResource("6_6et1j")
 follow_mode = 5
 follow_target = NodePath("../CharacterBody2D")

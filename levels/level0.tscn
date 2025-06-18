@@ -33,15 +33,7 @@ polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414,
 
 [node name="Level0" type="Node2D"]
 
-[node name="LevelEssentials" type="Node" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="LevelEssentials"]
-z_index = -4
-offset_left = -1669.0
-offset_top = -1700.0
-offset_right = 7331.0
-offset_bottom = 4300.0
-color = Color(0.360784, 0.356863, 0.356863, 1)
+[node name="LevelEssentials" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_rqr14")]
 position = Vector2(1785, 1454)
@@ -74,83 +66,93 @@ dead_zone_width = 0.1
 dead_zone_height = 0.1
 _preview_noise = false
 
-[node name="Fuel" parent="." instance=ExtResource("5_4kw1h")]
+[node name="World" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+z_index = -4
+offset_left = -1669.0
+offset_top = -1700.0
+offset_right = 7331.0
+offset_bottom = 4300.0
+color = Color(0.360784, 0.356863, 0.356863, 1)
+
+[node name="Fuel" parent="World" instance=ExtResource("5_4kw1h")]
 position = Vector2(1132, 1941)
 fuel_amount = 2.0
 is_self_destruct = false
 
-[node name="Fuel2" parent="." instance=ExtResource("5_4kw1h")]
+[node name="Fuel2" parent="World" instance=ExtResource("5_4kw1h")]
 position = Vector2(4039, 1543)
 fuel_amount = 3.0
 is_self_destruct = false
 
-[node name="LevelBuilder" parent="." instance=ExtResource("5_2etfj")]
+[node name="LevelBuilder" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
 
-[node name="CollisionPolygon2D" parent="LevelBuilder" index="0"]
+[node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
 polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
-[node name="Polygon2D" parent="LevelBuilder" index="1"]
+[node name="Polygon2D" parent="World/LevelBuilder" index="1"]
 polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
-[node name="LightOccluder2D" parent="LevelBuilder" index="2"]
+[node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
 occluder = SubResource("OccluderPolygon2D_w2q2b")
 
-[node name="LevelBuilder2" parent="." instance=ExtResource("5_2etfj")]
+[node name="LevelBuilder2" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
 
-[node name="CollisionPolygon2D" parent="LevelBuilder2" index="0"]
+[node name="CollisionPolygon2D" parent="World/LevelBuilder2" index="0"]
 polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
 
-[node name="Polygon2D" parent="LevelBuilder2" index="1"]
+[node name="Polygon2D" parent="World/LevelBuilder2" index="1"]
 polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
 
-[node name="LightOccluder2D" parent="LevelBuilder2" index="2"]
+[node name="LightOccluder2D" parent="World/LevelBuilder2" index="2"]
 occluder = SubResource("OccluderPolygon2D_f811g")
 
-[node name="LevelBuilder3" parent="." instance=ExtResource("5_2etfj")]
+[node name="LevelBuilder3" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
 
-[node name="CollisionPolygon2D" parent="LevelBuilder3" index="0"]
+[node name="CollisionPolygon2D" parent="World/LevelBuilder3" index="0"]
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
 
-[node name="Polygon2D" parent="LevelBuilder3" index="1"]
+[node name="Polygon2D" parent="World/LevelBuilder3" index="1"]
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
 
-[node name="LightOccluder2D" parent="LevelBuilder3" index="2"]
+[node name="LightOccluder2D" parent="World/LevelBuilder3" index="2"]
 occluder = SubResource("OccluderPolygon2D_f3act")
 
-[node name="LevelBuilder5" parent="." instance=ExtResource("5_2etfj")]
+[node name="LevelBuilder5" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
 
-[node name="CollisionPolygon2D" parent="LevelBuilder5" index="0"]
+[node name="CollisionPolygon2D" parent="World/LevelBuilder5" index="0"]
 position = Vector2(-1999, -899)
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
 
-[node name="Polygon2D" parent="LevelBuilder5" index="1"]
+[node name="Polygon2D" parent="World/LevelBuilder5" index="1"]
 position = Vector2(-1999, -899)
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
 
-[node name="LightOccluder2D" parent="LevelBuilder5" index="2"]
+[node name="LightOccluder2D" parent="World/LevelBuilder5" index="2"]
 position = Vector2(-1999, -899)
 occluder = SubResource("OccluderPolygon2D_cxy21")
 
-[node name="LevelBuilder4" parent="." instance=ExtResource("5_2etfj")]
+[node name="LevelBuilder4" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2279, 2307)
 
-[node name="CollisionPolygon2D" parent="LevelBuilder4" index="0"]
+[node name="CollisionPolygon2D" parent="World/LevelBuilder4" index="0"]
 position = Vector2(467, -361)
 polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
 
-[node name="Polygon2D" parent="LevelBuilder4" index="1"]
+[node name="Polygon2D" parent="World/LevelBuilder4" index="1"]
 position = Vector2(467, -361)
 polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
 
-[node name="LightOccluder2D" parent="LevelBuilder4" index="2"]
+[node name="LightOccluder2D" parent="World/LevelBuilder4" index="2"]
 position = Vector2(467, -361)
 occluder = SubResource("OccluderPolygon2D_v3eec")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="World"]
 position = Vector2(1756, 1943)
 color = Color(0.858824, 0.901961, 0.913725, 1)
 energy = 0.39
@@ -158,7 +160,7 @@ shadow_enabled = true
 texture = ExtResource("7_3vj3r")
 texture_scale = 10.0
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
+[node name="PointLight2D2" type="PointLight2D" parent="World"]
 position = Vector2(4171, 860)
 color = Color(0.858824, 0.901961, 0.913725, 1)
 energy = 0.39
@@ -166,7 +168,7 @@ shadow_enabled = true
 texture = ExtResource("7_3vj3r")
 texture_scale = 10.0
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
+[node name="PointLight2D3" type="PointLight2D" parent="World"]
 position = Vector2(1527, -713)
 color = Color(0.858824, 0.901961, 0.913725, 1)
 energy = 0.1
@@ -174,19 +176,19 @@ shadow_enabled = true
 texture = ExtResource("7_3vj3r")
 texture_scale = 21.25
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="World"]
 offset_left = 4945.0
 offset_top = 330.0
-offset_right = 4985.0
+offset_right = 5111.0
 offset_bottom = 353.0
 text = "THE END FOR NOW :>"
 
-[node name="LevelEnd" parent="." instance=ExtResource("8_p8yh6")]
+[node name="LevelEnd" parent="World" instance=ExtResource("8_p8yh6")]
 position = Vector2(5137, 398)
 next_level = ExtResource("9_w2q2b")
 
-[editable path="LevelBuilder"]
-[editable path="LevelBuilder2"]
-[editable path="LevelBuilder3"]
-[editable path="LevelBuilder5"]
-[editable path="LevelBuilder4"]
+[editable path="World/LevelBuilder"]
+[editable path="World/LevelBuilder2"]
+[editable path="World/LevelBuilder3"]
+[editable path="World/LevelBuilder5"]
+[editable path="World/LevelBuilder4"]
