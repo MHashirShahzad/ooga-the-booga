@@ -67,8 +67,7 @@ func _physics_process(delta: float) -> void:
 			if land_velocity >= ground_pound_velocity:
 				super_jump_timer = super_jump_time
 				# dust particles :P
-				VFXManager.add_vfx(LAND_VFX, $VFXSpawnLocation.global_position)
-				print("[Player]: ",$VFXSpawnLocation.global_position)
+				dust_particles()
 			squash()
 		is_on_ground = true
 	else:
@@ -169,6 +168,19 @@ func stretch():
 	stretched_size = clamp(stretched_size, Vector2(0.7, 1.1), Vector2(0.9, 1.2) )
 	tween.tween_property(sprite_2d, "scale",stretched_size, .1).set_trans(Tween.TRANS_QUAD)
 	tween.tween_callback(squash_and_stretch_finished)
+
+func dust_particles():
+	var vfx = LAND_VFX.instantiate()
+	if vfx is CPUParticles2D:
+		var level = get_tree().get_first_node_in_group("level")
+		level.add_child(vfx)
+		vfx.global_position = $VFXSpawnLocation.global_position
+		#vfx.rotation_degrees = marker.rotation_degrees
+		vfx.emitting = 1
+		await vfx.finished
+		level.remove_child(vfx)
+		vfx.queue_free()
+		
 
 # Return character to original state after squas and strectch are finsihed
 func squash_and_stretch_finished():

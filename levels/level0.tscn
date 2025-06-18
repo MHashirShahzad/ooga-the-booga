@@ -31,7 +31,7 @@ polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v3eec"]
 polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
 
-[node name="Level0" type="Node2D"]
+[node name="Level0" type="Node2D" groups=["level"]]
 
 [node name="LevelEssentials" type="Node2D" parent="."]
 
