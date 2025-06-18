@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://br8vpoqj66uy4"]
+[gd_scene load_steps=7 format=3 uid="uid://br8vpoqj66uy4"]
 
 [ext_resource type="Script" uid="uid://c2j8tu12fuily" path="res://props/level_end.gd" id="1_lp4tp"]
 [ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="2_lp4tp"]
+[ext_resource type="Texture2D" uid="uid://dk8iam218o4hw" path="res://assets/diamond.png" id="2_tbawr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5jb1k"]
 radius = 128.472
@@ -36,14 +37,14 @@ energy = 0.39
 texture = ExtResource("2_lp4tp")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 10
-texture = ExtResource("2_lp4tp")
+amount = 20
+texture = ExtResource("2_tbawr")
 randomness = 0.22
 emission_shape = 1
 emission_sphere_radius = 128.0
 gravity = Vector2(0, -400)
-scale_amount_min = 0.1
-scale_amount_max = 0.2
+scale_amount_min = 0.5
+scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_lp4tp")
 color = Color(0.913725, 0.917647, 0.580392, 1)
 color_ramp = SubResource("Gradient_lp4tp")

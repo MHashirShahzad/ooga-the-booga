@@ -1,30 +1,46 @@
 extends CharacterBody2D
 class_name Player2D
 
+const LAND_VFX = preload("res://player/land_vfx.tscn")
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Polygon2D = $SpriteHouser/Sprite2D
 @onready var point_light : PointLight2D = $PointLight2D
+
+
+@export var ground_pound_velocity = 1000
+
+@export_group("Effects")
 @export var light_fade_multiplier : float = .1
+@export var squashed_size:Vector2 = Vector2(1.1, 0.8) 
+@export var stretched_size:Vector2 = Vector2(0.8, 1.1)
+
+@export_group("Movement")
+@export var speed : float = 500.0
 @export var acceleration : float = 25
 @export var deceleration : float = 20
 
-const jump_buffer_time:float = .1
-const coyote_time:float = .3
+@export_group("Jump")
+@export var max_jump_count : int = 1
+@export var jump_velocity : float = -700.0
+@export var jump_buffer_time : float = .1
+@export var super_jump_time : float = .1
+@export var terminal_velocity = 3000
+@export var coyote_time:float = .3
+
+
 
 var jump_buffer_timer:float = 0
 var coyote_timer:float = 0
-
-var speed : float = 500.0
-var jump_velocity : float = -700.0
+var super_jump_timer:float = 0
 var jump_count : int = 0
 
 var is_on_ground : bool 
+var can_super_jump : bool
 var land_velocity : float 
-
-var squashed_size:Vector2 = Vector2(1.1, 0.8) 
-var stretched_size:Vector2 = Vector2(0.8, 1.1)
-
 var wish_dir : float = 0
+
+
+
 
 func _ready():
 	jump_buffer_timer = 0
@@ -34,6 +50,7 @@ func _process(delta):
 	# Subtract delta(frame) every delta(frame) from these vars
 	jump_buffer_timer -= delta
 	coyote_timer -= delta
+	super_jump_timer -= delta
 
 func _physics_process(delta: float) -> void:
 	light_fade(delta)
@@ -42,13 +59,15 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jump_count = 0
 		if jump_buffer_timer > 0:
-			jump_count = jump_count + 1
-			velocity.y = jump_velocity
+			jump()
 		 	
 		if not is_on_ground:
 			pass
 			#dust_particles.emitting = true
-			
+			if land_velocity >= ground_pound_velocity:
+				super_jump_timer = super_jump_time
+				# dust particles :P
+				VFXManager.add_vfx(LAND_VFX, $VFXSpawnLocation)
 			squash()
 		is_on_ground = true
 	else:
@@ -66,44 +85,61 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func apply_gravity(delta) -> void:
+	if velocity.y >= terminal_velocity:
+		velocity.y = terminal_velocity
+		return
 	
 	if velocity.y > 0:
 		velocity += get_gravity() * delta * 1.2
 	else:
-		velocity += get_gravity() * delta 
+		velocity += get_gravity() * delta
+		
 	
 func handle_input():
-	#  JUMP
+	#region JUMP
 	if Input.is_action_just_pressed("jump"):
-		
 		if coyote_timer > 0:
 				#AudioPlayer.play_FX(jump_sound, 0, 1, 1.5)
-			velocity.y = jump_velocity
-			jump_count = 1
-		elif jump_count < 1:
+			jump()
+			
+		elif jump_count < max_jump_count:
 			if jump_count == 0:
-				pass
 				stretch()
 			# AUDIO  (sound, volume, lower_limit, upper_limit)
 			#AudioPlayer.play_FX(jump_sound, 0, 1, 1.5)
-			jump_count = jump_count + 1
-			velocity.y = jump_velocity
+			jump()
+			
 		else:
 			jump_buffer_timer = jump_buffer_time
 	if Input.is_action_just_released('jump'):
-		if jump_count < 1:
+		if jump_count <= max_jump_count:
 			velocity.y *= 0.5
+	#endregion 
 	
-	# Movement
+	#region Movement
 	wish_dir = Input.get_axis("left", "right")
-	
 	if wish_dir:
 		velocity.x = move_toward(velocity.x, wish_dir * speed, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
+	#endregion 
 	
+	if Input.is_action_just_pressed("ground_pound"):
+		if is_on_floor():
+			return
+			
+		if self.velocity.y >= ground_pound_velocity:
+			return
+		self.velocity.y = ground_pound_velocity
+		stretch()
 
-
+func jump():
+	jump_count = jump_count + 1
+	if super_jump_timer > 0:
+		velocity.y = jump_velocity * 1.2
+	else:
+		velocity.y = jump_velocity
+		
 func lean_in_wish_dir(delta : float):
 	if wish_dir:
 		rotation_degrees = move_toward(rotation_degrees, wish_dir * 10, acceleration / 4)
@@ -119,17 +155,18 @@ func light_fade(delta: float) -> void:
 
 # Squash on land for cute effects :)
 func squash():
-
 	var tween = get_tree().create_tween()
+	squashed_size = squashed_size / land_velocity / 400
+	squashed_size = clamp(squashed_size, Vector2(1.1, 0.7), Vector2(1.3, 0.9) )
 	tween.tween_property(sprite_2d, "scale",squashed_size, .1).set_trans(Tween.TRANS_QUAD)
-	#tween.tween_property(silhouette_sprite, "scale",squashed_size, .1).set_trans(Tween.TRANS_QUAD)
 	tween.tween_callback(squash_and_stretch_finished)
 	
 # Strectch on jump for cute effects :)
 func stretch():
 	var tween = get_tree().create_tween()
+	stretched_size = stretched_size / velocity.y / 700
+	stretched_size = clamp(stretched_size, Vector2(0.7, 1.1), Vector2(0.9, 1.2) )
 	tween.tween_property(sprite_2d, "scale",stretched_size, .1).set_trans(Tween.TRANS_QUAD)
-	#tween.tween_property(silhouette_sprite, "scale",stretched_size, .1).set_trans(Tween.TRANS_QUAD)
 	tween.tween_callback(squash_and_stretch_finished)
 
 # Return character to original state after squas and strectch are finsihed
