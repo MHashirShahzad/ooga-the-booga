@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="5_4kw1h"]
 [ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="7_3vj3r"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="8_p8yh6"]
-[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="9_w2q2b"]
+[ext_resource type="PackedScene" uid="uid://crghpbxb43xhe" path="res://levels/level1.tscn" id="9_w2q2b"]
 
 [sub_resource type="Resource" id="Resource_p8yh6"]
 script = ExtResource("4_3vj3r")

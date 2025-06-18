@@ -90,7 +90,7 @@ func apply_gravity(delta) -> void:
 		return
 	
 	if velocity.y > 0:
-		velocity += get_gravity() * delta * 1.2
+		velocity += get_gravity() * delta * 1.25
 	else:
 		velocity += get_gravity() * delta
 		
