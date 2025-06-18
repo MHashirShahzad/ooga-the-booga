@@ -26,7 +26,7 @@ polygon = PackedVector2Array(240, -424, 280, -688, 536, -736, 744, -640, 801, -4
 polygon = PackedVector2Array(240, -424, 238, -537, 562, -582, 792, -535, 801, -425, 460, -474)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bekh1"]
-polygon = PackedVector2Array(401, -514, 152, -460, 335, -480, 624, -502, 730, -551)
+polygon = PackedVector2Array(401, -514, 181, -469, 156, -427, 197, -450, 335, -480, 624, -502, 730, -551)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8bcou"]
 polygon = PackedVector2Array(238, -537, 316, -469, 620, -353, 434, -351, 271, -393, 210, -353)
@@ -75,8 +75,8 @@ _preview_noise = false
 z_index = -4
 offset_left = -1628.0
 offset_top = -1708.0
-offset_right = 7372.0
-offset_bottom = 4292.0
+offset_right = 5191.0
+offset_bottom = 2338.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="LevelEnd" parent="World" instance=ExtResource("8_a5s8o")]
@@ -138,15 +138,15 @@ polygon = PackedVector2Array(240, -424, 238, -537, 562, -582, 792, -535, 801, -4
 occluder = SubResource("OccluderPolygon2D_yydhl")
 
 [node name="LevelBuilder6" parent="World" instance=ExtResource("6_f7u7y")]
-position = Vector2(1457, 425)
+position = Vector2(1473, 347)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder6" index="0"]
 position = Vector2(50, -95)
-polygon = PackedVector2Array(401, -514, 152, -460, 335, -480, 624, -502, 730, -551)
+polygon = PackedVector2Array(401, -514, 181, -469, 156, -427, 197, -450, 335, -480, 624, -502, 730, -551)
 
 [node name="Polygon2D" parent="World/LevelBuilder6" index="1"]
 position = Vector2(50, -95)
-polygon = PackedVector2Array(401, -514, 152, -460, 335, -480, 624, -502, 730, -551)
+polygon = PackedVector2Array(401, -514, 181, -469, 156, -427, 197, -450, 335, -480, 624, -502, 730, -551)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder6" index="2"]
 position = Vector2(50, -95)

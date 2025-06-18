@@ -70,10 +70,10 @@ _preview_noise = false
 
 [node name="ColorRect" type="ColorRect" parent="World"]
 z_index = -4
-offset_left = -1669.0
-offset_top = -1700.0
-offset_right = 7331.0
-offset_bottom = 4300.0
+offset_left = -549.0
+offset_top = -1468.0
+offset_right = 5947.0
+offset_bottom = 2906.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="Fuel" parent="World" instance=ExtResource("5_4kw1h")]
@@ -175,13 +175,6 @@ energy = 0.1
 shadow_enabled = true
 texture = ExtResource("7_3vj3r")
 texture_scale = 21.25
-
-[node name="Label" type="Label" parent="World"]
-offset_left = 4945.0
-offset_top = 330.0
-offset_right = 5111.0
-offset_bottom = 353.0
-text = "THE END FOR NOW :>"
 
 [node name="LevelEnd" parent="World" instance=ExtResource("8_p8yh6")]
 position = Vector2(5137, 398)
