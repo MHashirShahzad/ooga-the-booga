@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://br8vpoqj66uy4"]
+[gd_scene load_steps=6 format=3 uid="uid://br8vpoqj66uy4"]
 
 [ext_resource type="Script" uid="uid://c2j8tu12fuily" path="res://props/level_end.gd" id="1_lp4tp"]
+[ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="2_lp4tp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5jb1k"]
 radius = 128.472
 
-[sub_resource type="Gradient" id="Gradient_jl4oc"]
+[sub_resource type="Curve" id="Curve_lp4tp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.285714, 0.385827), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lp4tp"]
-gradient = SubResource("Gradient_jl4oc")
-fill_to = Vector2(1, 0.821101)
+[sub_resource type="Gradient" id="Gradient_lp4tp"]
+offsets = PackedFloat32Array(0, 0.114198, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="LevelEnd" type="Area2D"]
 script = ExtResource("1_lp4tp")
@@ -17,6 +20,32 @@ script = ExtResource("1_lp4tp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5jb1k")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+rotation = 0.785398
+color = Color(0.915603, 0.917469, 0.580333, 1)
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+rotation = 0.785398
+color = Color(0.0509804, 0.054902, 0.0392157, 1)
+polygon = PackedVector2Array(-8, -8, 7.99999, -8, 8, 8, -7.99999, 8)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.32549, 1, 1, 1)
-texture = SubResource("GradientTexture2D_lp4tp")
+color = Color(0.913725, 0.917647, 0.580392, 1)
+energy = 0.39
+texture = ExtResource("2_lp4tp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 10
+texture = ExtResource("2_lp4tp")
+randomness = 0.22
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(0, -400)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_lp4tp")
+color = Color(0.913725, 0.917647, 0.580392, 1)
+color_ramp = SubResource("Gradient_lp4tp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
