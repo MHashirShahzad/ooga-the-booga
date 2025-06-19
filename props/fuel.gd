@@ -15,6 +15,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player2D:
 		if is_self_destruct:
 			body.point_light.texture_scale += fuel_amount
+			body.ani_player.play("refill_fuel")
 			self.queue_free()
 		else:
 			body.point_light.texture_scale = max(body.point_light.texture_scale, fuel_amount)
+			body.ani_player.play("refill_fuel")

@@ -3,10 +3,12 @@ class_name Player2D
 
 const LAND_VFX = preload("res://player/land_vfx.tscn")
 
+
 @onready var sprite_2d: Polygon2D = $SpriteHouser/Sprite2D
 @onready var point_light : PointLight2D = $PointLight2D
+@onready var ani_player: AnimationPlayer = $AniPlayer
 
-
+#region export_variables
 @export var ground_pound_velocity = 1000
 
 @export_group("Effects")
@@ -26,9 +28,9 @@ const LAND_VFX = preload("res://player/land_vfx.tscn")
 @export var super_jump_time : float = .1
 @export var terminal_velocity = 3000
 @export var coyote_time:float = .3
+#endregion
 
-
-
+#region variables
 var jump_buffer_timer:float = 0
 var coyote_timer:float = 0
 var super_jump_timer:float = 0
@@ -39,20 +41,24 @@ var can_super_jump : bool
 var land_velocity : float 
 var wish_dir : float = 0
 
-
-
+var is_dead : bool = false
+#endregion
 
 func _ready():
 	jump_buffer_timer = 0
 	coyote_timer = 0
 
 func _process(delta):
+	if is_dead:
+		return
 	# Subtract delta(frame) every delta(frame) from these vars
 	jump_buffer_timer -= delta
 	coyote_timer -= delta
 	super_jump_timer -= delta
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	light_fade(delta)
 	
 	# Coyote stuff
@@ -66,8 +72,9 @@ func _physics_process(delta: float) -> void:
 			#dust_particles.emitting = true
 			if land_velocity >= ground_pound_velocity:
 				super_jump_timer = super_jump_time
-				# dust particles :P
-				dust_particles()
+				# dust particles :P, doesnt work
+				#TODO fix these if u can
+				VFXManager.add_vfx(LAND_VFX, $VFXSpawnLocation)
 			squash()
 		is_on_ground = true
 	else:
@@ -113,7 +120,9 @@ func handle_input():
 			jump_buffer_timer = jump_buffer_time
 	if Input.is_action_just_released('jump'):
 		if jump_count <= max_jump_count:
-			velocity.y *= 0.5
+			
+			if velocity.y < 0: # is negative
+				velocity.y *= 0.5
 	#endregion 
 	
 	#region Movement
@@ -148,7 +157,9 @@ func lean_in_wish_dir(delta : float):
 	pass
 	
 func light_fade(delta: float) -> void:
+	if is_dead: return
 	if point_light.texture_scale <= 0:
+		die()
 		return
 	
 	point_light.texture_scale -= delta * light_fade_multiplier
@@ -169,21 +180,13 @@ func stretch():
 	tween.tween_property(sprite_2d, "scale",stretched_size, .1).set_trans(Tween.TRANS_QUAD)
 	tween.tween_callback(squash_and_stretch_finished)
 
-func dust_particles():
-	var vfx = LAND_VFX.instantiate()
-	if vfx is CPUParticles2D:
-		var level = get_tree().get_first_node_in_group("level")
-		level.add_child(vfx)
-		vfx.global_position = $VFXSpawnLocation.global_position
-		#vfx.rotation_degrees = marker.rotation_degrees
-		vfx.emitting = 1
-		await vfx.finished
-		level.remove_child(vfx)
-		vfx.queue_free()
-		
-
 # Return character to original state after squas and strectch are finsihed
 func squash_and_stretch_finished():
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite_2d, "scale",Vector2(1,1), .1).set_trans(Tween.TRANS_QUAD)
 	#tween.tween_property(silhouette_sprite, "scale",Vector2(1,1), .1).set_trans(Tween.TRANS_QUAD)
+
+func die():
+	is_dead = true
+	ani_player.play("die")
+	TransitionManager.transition_scene_file(get_tree().current_scene.scene_file_path)
