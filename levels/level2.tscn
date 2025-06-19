@@ -36,14 +36,14 @@ polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
 [node name="LevelEssentials" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_55gdq")]
-position = Vector2(481, 750)
+position = Vector2(376, 737)
 
 [node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
 color = Color(0.0509804, 0.054902, 0.0392157, 1)
 
 [node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
 physics_interpolation_mode = 1
-position = Vector2(481, 750)
+position = Vector2(376, 737)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 
@@ -54,7 +54,7 @@ script = ExtResource("2_crte6")
 
 [node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(481, 750)
+position = Vector2(376, 737)
 script = ExtResource("3_hq01p")
 follow_mode = 5
 follow_target = NodePath("../CharacterBody2D")
@@ -80,8 +80,13 @@ color = Color(0.360784, 0.356863, 0.356863, 1)
 position = Vector2(5246, 490)
 next_level = ExtResource("6_6mfmt")
 
+[node name="PointLight2D" parent="World/LevelEnd" index="3"]
+energy = 1.0
+shadow_enabled = true
+texture_scale = 4.0
+
 [node name="Fuel" parent="World" instance=ExtResource("7_qegch")]
-position = Vector2(319, 731)
+position = Vector2(569, 778)
 fuel_amount = 2.5
 is_self_destruct = false
 
@@ -119,7 +124,7 @@ polygon = PackedVector2Array(547, -817, 522.58, -1027.95, 488, -1137, 494, -1031
 [node name="Spike4" type="Polygon2D" parent="World"]
 position = Vector2(2891, 500)
 color = Color(0.583457, 0.220422, 0.234526, 1)
-polygon = PackedVector2Array(84, -20, 66, 0, 61, 16, 187, 30, 188, 35, 191, 30, 194, 33, 194, 30, 196, 31, 195, 34, 199, 32, 198, 35, 201, 32, 201, 35, 205, 32, 207, 35, 207, 32, 206, 29, 203, 32, 202, 27, 201, 31, 199, 28, 196, 29, 198, 26, 193, 28, 198, 2, 182, 28, 180, -1, 163, 24, 165, 0, 154.652, 20.1903, 147, -16, 134, 16, 137, -11, 122, 13, 115, -12, 101, 12, 98, -13, 76, 4)
+polygon = PackedVector2Array(87, -34, 66, 0, 61, 16, 187, 30, 188, 35, 191, 30, 194, 33, 194, 30, 196, 31, 195, 34, 199, 32, 198, 35, 201, 32, 201, 35, 205, 32, 207, 35, 207, 32, 206, 29, 203, 32, 202, 27, 201, 31, 199, 28, 196, 29, 198, 26, 193, 28, 194, -13, 182, 28, 177, -10, 163, 24, 162, -9, 154.652, 20.1903, 144, -29, 134, 16, 129, -27, 122, 13, 114, -34, 101, 12, 97, -32, 76, 4)
 
 [node name="LevelBuilder" parent="World" instance=ExtResource("8_jai45")]
 position = Vector2(1011, 1937)
@@ -176,12 +181,71 @@ polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
 occluder = SubResource("OccluderPolygon2D_qegch")
 
 [node name="PointLight2D" type="PointLight2D" parent="World"]
-position = Vector2(3308, 500)
+position = Vector2(3341, 451)
 color = Color(0.858824, 0.901961, 0.913725, 1)
 energy = 0.2
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 5.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="World"]
+position = Vector2(1963, 1279)
+color = Color(0.720261, 0.93926, 0.963192, 1)
+energy = 0.2
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 5.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="World"]
+position = Vector2(4398, 451)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 2.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="World"]
+position = Vector2(2406, 480)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="World"]
+position = Vector2(43, 1013)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 2.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="World"]
+position = Vector2(1252, 1076)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 1.5
+
+[node name="PointLight2D8" type="PointLight2D" parent="World"]
+position = Vector2(1316, 873)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+
+[node name="PointLight2D6" type="PointLight2D" parent="World"]
+position = Vector2(3024, 501)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 0.5
+
+[node name="PointLight2D5" type="PointLight2D" parent="World"]
+position = Vector2(1411, 869)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 0.8
 
 [node name="KillZone" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(72, 1020)
@@ -214,7 +278,7 @@ scale = Vector2(6.60626, 16.803)
 
 [node name="CollisionPolygon2D" parent="KillZone4" index="0"]
 position = Vector2(16.4925, -32.2708)
-polygon = PackedVector2Array(5.00537, -4.49773, 4.73526, -3.40551, -17.3909, -4.91933, -16.5782, -5.73787)
+polygon = PackedVector2Array(1.69983, -4.33866, 4.36438, -4.10709, 2.33441, -3.76962, -17.3909, -4.91933, -16.5782, -5.73787, -16.5933, -6.27668, -5.79678, -6.37633, -4.90167, -5.46007, 1.52237, -5.88901)
 
 [node name="Spring" parent="." instance=ExtResource("9_jj0ry")]
 position = Vector2(746, 945)
@@ -222,6 +286,7 @@ rotation = 0.607824
 scale = Vector2(0.4, 0.4)
 launch_velocity = 1150
 
+[editable path="World/LevelEnd"]
 [editable path="World/LevelBuilder"]
 [editable path="World/LevelBuilder2"]
 [editable path="World/LevelBuilder3"]
