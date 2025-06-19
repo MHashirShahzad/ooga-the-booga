@@ -128,7 +128,10 @@ func handle_input():
 	#region Movement
 	wish_dir = Input.get_axis("left", "right")
 	if wish_dir:
-		velocity.x = move_toward(velocity.x, wish_dir * speed, acceleration)
+		if super_jump_timer > 0:
+			velocity.x = move_toward(velocity.x, wish_dir * speed * 2, acceleration)
+		else:
+			velocity.x = move_toward(velocity.x, wish_dir * speed, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 	#endregion 

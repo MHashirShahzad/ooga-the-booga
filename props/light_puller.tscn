@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://byurm6yhi1drh"]
+
+[ext_resource type="Script" uid="uid://lpr6fsjx6mx0" path="res://props/light_puller.gd" id="1_xe8vy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktopr"]
+size = Vector2(87, 448)
+
+[node name="LightPuller" type="Area2D"]
+script = ExtResource("1_xe8vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_ktopr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
