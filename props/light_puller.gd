@@ -12,13 +12,17 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	await get_tree().create_timer(0.2).timeout
 	if body is Player2D:
 		var tween = get_tree().create_tween()
 		player = body
+		player.is_being_pulled = true
 		tween.tween_property(player.sprite_2d, "scale", Vector2(.9, 1.1), .2).set_trans(Tween.TRANS_QUAD)
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player2D:
+		if !player: return
+		player.is_being_pulled = false
 		player.squash_and_stretch_finished()
 		player = null

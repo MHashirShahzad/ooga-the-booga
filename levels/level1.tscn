@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_bekh1"]
 [ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="5_8bcou"]
 [ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="6_f7u7y"]
+[ext_resource type="PackedScene" uid="uid://wlycmv3qfr50" path="res://levels/level2.tscn" id="6_omn1t"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="8_a5s8o"]
-[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="9_ls4ot"]
 [ext_resource type="PackedScene" uid="uid://dtdig231j65i6" path="res://props/spring.tscn" id="9_omn1t"]
 
 [sub_resource type="Resource" id="Resource_p8yh6"]
@@ -34,7 +34,7 @@ polygon = PackedVector2Array(238, -537, 316, -469, 620, -353, 434, -351, 271, -3
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f7u7y"]
 polygon = PackedVector2Array(453, 424, 219, -170, 280, -607, 74, -800, 540, -787, 772, -837, 791, -464, 680.318, -45.6727, 631, 380)
 
-[node name="Level0" type="Node2D" groups=["level"]]
+[node name="Level1" type="Node2D" groups=["level"]]
 
 [node name="LevelEssentials" type="Node2D" parent="."]
 
@@ -81,7 +81,7 @@ color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="LevelEnd" parent="World" instance=ExtResource("8_a5s8o")]
 position = Vector2(2806, 925)
-next_level = ExtResource("9_ls4ot")
+next_level = ExtResource("6_omn1t")
 
 [node name="Fuel" parent="World" instance=ExtResource("5_8bcou")]
 position = Vector2(122, 676)

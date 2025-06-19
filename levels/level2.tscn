@@ -1,0 +1,227 @@
+[gd_scene load_steps=18 format=3 uid="uid://wlycmv3qfr50"]
+
+[ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_55gdq"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_crte6"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_hq01p"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_fjysh"]
+[ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="5_bcewn"]
+[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="6_6mfmt"]
+[ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="7_qegch"]
+[ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="8_jai45"]
+[ext_resource type="PackedScene" uid="uid://byurm6yhi1drh" path="res://props/light_puller.tscn" id="9_hq01p"]
+[ext_resource type="PackedScene" uid="uid://dtdig231j65i6" path="res://props/spring.tscn" id="9_jj0ry"]
+[ext_resource type="PackedScene" uid="uid://byxlqnokaiww0" path="res://props/kill_zone.tscn" id="10_crte6"]
+[ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="10_fjysh"]
+
+[sub_resource type="Resource" id="Resource_p8yh6"]
+script = ExtResource("4_fjysh")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bcewn"]
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3650, -1745, 3650, -1482, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6mfmt"]
+polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qegch"]
+polygon = PackedVector2Array(540, -568, 785, -501, 414, -535)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jai45"]
+polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
+
+[node name="Level2" type="Node2D" groups=["level"]]
+
+[node name="LevelEssentials" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_55gdq")]
+position = Vector2(481, 750)
+
+[node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
+color = Color(0.0509804, 0.054902, 0.0392157, 1)
+
+[node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
+physics_interpolation_mode = 1
+position = Vector2(481, 750)
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="LevelEssentials/Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_crte6")
+
+[node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(481, 750)
+script = ExtResource("3_hq01p")
+follow_mode = 5
+follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(0.8, 0.8)
+tween_resource = SubResource("Resource_p8yh6")
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+dead_zone_width = 0.1
+dead_zone_height = 0.1
+_preview_noise = false
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+z_index = -4
+offset_left = -1633.0
+offset_top = -1685.0
+offset_right = 5186.0
+offset_bottom = 2361.0
+color = Color(0.360784, 0.356863, 0.356863, 1)
+
+[node name="LevelEnd" parent="World" instance=ExtResource("5_bcewn")]
+position = Vector2(4505, 362)
+next_level = ExtResource("6_6mfmt")
+
+[node name="Fuel" parent="World" instance=ExtResource("7_qegch")]
+position = Vector2(319, 731)
+fuel_amount = 2.5
+is_self_destruct = false
+
+[node name="Fuel2" parent="World" instance=ExtResource("7_qegch")]
+position = Vector2(-507, -509)
+fuel_amount = 3.0
+is_self_destruct = false
+
+[node name="Spike1" type="Polygon2D" parent="World"]
+z_index = 1
+position = Vector2(1011, 1938)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+invert_border = 1000.0
+polygon = PackedVector2Array(-750, -850, -771, -920, -769, -853, -784, -881, -792, -854, -798, -899, -816, -856, -828, -863, -814, -907, -846, -857, -854, -904, -877.417, -854.247, -897, -862, -917, -921, -915.364, -855.512, -945, -926, -943, -860, -960, -857, -958, -932, -986.768, -860.059, -1005, -905, -1021.42, -861.531, -1047, -944, -1056, -863, -1085, -918, -1103, -868, -1125, -946, -1140, -877, -1142, -836, -759, -832)
+
+[node name="Spike3" type="Polygon2D" parent="World"]
+z_index = 1
+position = Vector2(4230, 2144)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+invert_border = 1000.0
+polygon = PackedVector2Array(-719, -888, -737, -975, -769, -853, -783, -976, -792, -854, -797, -924, -816, -856, -818, -893, -823, -958, -846, -857, -864, -960, -877.417, -854.247, -897, -862, -921, -957, -915.364, -855.512, -986, -980, -943, -860, -960, -857, -953, -976, -986.768, -860.059, -1018, -980, -1021.42, -861.531, -1051, -983, -1056, -863, -1085, -918, -1103, -868, -1143, -975, -1140, -877, -1170, -858, -1223, -964, -1201, -849, -1298, -945, -1260, -842, -1312, -883, -1335, -834, -1394, -951, -1384, -832, -1443, -841, -1480, -936, -1479, -853, -1533, -824, -1549, -970, -1576, -850, -1626, -898, -1597, -985, -1638, -918, -1673, -975, -1683, -844, -1725, -855, -1731.98, -885.845, -1711, -926, -1742.2, -930.955, -1749, -961, -1751, -823, -1788, -725, -1, -743, 5, -908, -21.2563, -905.513, -119, -1136, -90, -899, -135, -972, -143, -899, -180, -992, -184, -891, -247, -1033, -210, -886, -314, -882, -315.002, -912.925, -266, -957, -316.288, -952.608, -321, -1098, -391, -886, -378, -1064, -451, -897, -453, -1011, -459.079, -978.58, -479, -1003, -466.285, -940.145, -471, -915, -514, -899, -515, -938, -487, -975, -514.641, -967.474, -514, -1020, -558, -896, -554, -993, -598, -902, -608, -1010, -650, -911, -670, -1021, -675.627, -977.035, -713, -980, -681.478, -931.324, -686, -896)
+
+[node name="Spike2" type="Polygon2D" parent="World"]
+z_index = 1
+position = Vector2(1010, 1937)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+invert_border = 1000.0
+polygon = PackedVector2Array(547, -817, 522.58, -1027.95, 488, -1137, 494, -1031, 451.871, -1033.54, 440, -1067, 460, -1114, 424.616, -1092.71, 405, -1141, 411, -1039, 387, -1063, 373, -1043, 371, -1134, 341, -1043, 313, -1127, 308, -1049, 268, -1126, 288, -1033, 266, -1038, 264, -1071, 255, -1051, 238, -1071, 261, -1016, 284, -1003, 235, -1007, 270, -982, 272, -947, 231, -964, 240.523, -949.144, 232, -915, 253, -933, 263, -902, 254, -874, 218, -907, 254, -850, 208, -866, 251, -835, 253, -813, 216, -808, 262, -794, 251, -766, 201, -783, 221, -759, 211, -739, 229, -752, 245, -733, 238, -722, 220, -721, 227, -697, 220, -690, 202, -692, 199, -709, 212, -722, 197, -713, 194, -734, 184, -695, 163, -701, 211, -658, 165, -661, 189.076, -632.168, 191, -526, 512, -535)
+
+[node name="Spike4" type="Polygon2D" parent="World"]
+position = Vector2(2891, 500)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+polygon = PackedVector2Array(84, -20, 66, 0, 61, 16, 187, 30, 188, 35, 191, 30, 194, 33, 194, 30, 196, 31, 195, 34, 199, 32, 198, 35, 201, 32, 201, 35, 205, 32, 207, 35, 207, 32, 206, 29, 203, 32, 202, 27, 201, 31, 199, 28, 196, 29, 198, 26, 193, 28, 198, 2, 182, 28, 180, -1, 163, 24, 165, 0, 154.652, 20.1903, 147, -16, 134, 16, 137, -11, 122, 13, 115, -12, 101, 12, 98, -13, 76, 4)
+
+[node name="LevelBuilder" parent="World" instance=ExtResource("8_jai45")]
+position = Vector2(1011, 1937)
+
+[node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
+build_mode = 1
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3650, -1745, 3650, -1482, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+
+[node name="Polygon2D" parent="World/LevelBuilder" index="1"]
+invert_enabled = true
+invert_border = 1000.0
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3650, -1745, 3650, -1482, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+
+[node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
+occluder = SubResource("OccluderPolygon2D_bcewn")
+
+[node name="LightPuller" parent="World/LevelBuilder" instance=ExtResource("9_hq01p")]
+position = Vector2(932, -782)
+
+[node name="LevelBuilder2" parent="World" instance=ExtResource("8_jai45")]
+position = Vector2(294, 650)
+
+[node name="CollisionPolygon2D" parent="World/LevelBuilder2" index="0"]
+polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
+
+[node name="Polygon2D" parent="World/LevelBuilder2" index="1"]
+polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
+
+[node name="LightOccluder2D" parent="World/LevelBuilder2" index="2"]
+occluder = SubResource("OccluderPolygon2D_6mfmt")
+
+[node name="LevelBuilder3" parent="World" instance=ExtResource("8_jai45")]
+position = Vector2(2318, 1034)
+
+[node name="CollisionPolygon2D" parent="World/LevelBuilder3" index="0"]
+polygon = PackedVector2Array(540, -568, 785, -501, 414, -535)
+
+[node name="Polygon2D" parent="World/LevelBuilder3" index="1"]
+polygon = PackedVector2Array(540, -568, 785, -501, 414, -535)
+
+[node name="LightOccluder2D" parent="World/LevelBuilder3" index="2"]
+occluder = SubResource("OccluderPolygon2D_qegch")
+
+[node name="LevelBuilder4" parent="World" instance=ExtResource("8_jai45")]
+position = Vector2(3129, 1027)
+
+[node name="CollisionPolygon2D" parent="World/LevelBuilder4" index="0"]
+polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
+
+[node name="Polygon2D" parent="World/LevelBuilder4" index="1"]
+polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
+
+[node name="LightOccluder2D" parent="World/LevelBuilder4" index="2"]
+occluder = SubResource("OccluderPolygon2D_jai45")
+
+[node name="PointLight2D" type="PointLight2D" parent="World"]
+position = Vector2(3310, 729)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.39
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 10.0
+
+[node name="KillZone" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(72, 1020)
+rotation = 0.0431308
+scale = Vector2(15.604, 2)
+
+[node name="CollisionPolygon2D" parent="KillZone" index="0"]
+polygon = PackedVector2Array(14.3779, 1.66483, 11.7537, 49.0918, -15.5686, 49.7837, -16, -7)
+
+[node name="KillZone2" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(1429, 820)
+rotation = 0.121745
+scale = Vector2(6.60626, 16.803)
+
+[node name="CollisionPolygon2D" parent="KillZone2" index="0"]
+polygon = PackedVector2Array(17.5044, 4.79396, -20.3623, 32.5769, -29.1992, 31.623, -25.6601, 4.7718, -23.3568, 2.8623, -16.8865, 1.11208, 12.5843, -0.725258)
+
+[node name="KillZone3" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(2891, 1117)
+rotation = 0.121745
+scale = Vector2(6.60626, 16.803)
+
+[node name="CollisionPolygon2D" parent="KillZone3" index="0"]
+polygon = PackedVector2Array(199.909, -3.9803, 26.0457, 10.6786, -61.0816, 14.9296, -64.5296, 8.26039, -30.2875, 6.07362, -19.8194, 7.36879, 12.2088, 4.92877, 60.0167, 1.25005, 64.9102, 2.27375, 101.711, -3.45363, 106.761, -3.39677, 136.983, -5.27025, 141.319, -7.99705, 153.594, -10.2064, 155.88, -3.84094, 166.546, -6.81223, 170.531, -4.78553, 172.119, -5.53207, 186.059, -4.87295, 182.345, -13.8677)
+
+[node name="KillZone4" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(2891, 1117)
+rotation = 0.121745
+scale = Vector2(6.60626, 16.803)
+
+[node name="CollisionPolygon2D" parent="KillZone4" index="0"]
+position = Vector2(16.4925, -32.2708)
+polygon = PackedVector2Array(5.00537, -4.49773, 4.73526, -3.40551, -17.3909, -4.91933, -16.5782, -5.73787)
+
+[node name="Spring" parent="." instance=ExtResource("9_jj0ry")]
+position = Vector2(746, 945)
+rotation = 0.607824
+scale = Vector2(0.4, 0.4)
+launch_velocity = 1150
+
+[editable path="World/LevelBuilder"]
+[editable path="World/LevelBuilder2"]
+[editable path="World/LevelBuilder3"]
+[editable path="World/LevelBuilder4"]
+[editable path="KillZone"]
+[editable path="KillZone2"]
+[editable path="KillZone3"]
+[editable path="KillZone4"]

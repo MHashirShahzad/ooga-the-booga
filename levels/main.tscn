@@ -111,6 +111,6 @@ is_self_destruct = false
 position = Vector2(505, 457)
 
 [node name="LightPuller" parent="." instance=ExtResource("10_jw1n3")]
-position = Vector2(1163, 212)
+position = Vector2(1310, 299)
 
 [editable path="LevelBuilder"]

@@ -42,6 +42,7 @@ var land_velocity : float
 var wish_dir : float = 0
 
 var is_dead : bool = false
+var is_being_pulled : bool = false
 #endregion
 
 func _ready():
@@ -139,7 +140,8 @@ func handle_input():
 	if Input.is_action_just_pressed("ground_pound"):
 		if is_on_floor():
 			return
-			
+		if is_being_pulled: return
+		
 		if self.velocity.y >= ground_pound_velocity:
 			return
 		self.velocity.y = ground_pound_velocity

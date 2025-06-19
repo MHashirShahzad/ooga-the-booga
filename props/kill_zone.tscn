@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxlqnokaiww0"]
+
+[ext_resource type="Script" uid="uid://df1ltrbj1w2yn" path="res://props/kill_zone.gd" id="1_va67h"]
+
+[node name="KillZone" type="Area2D"]
+script = ExtResource("1_va67h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(11, -8, 13, 12, -20, 13, -16, -7)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
