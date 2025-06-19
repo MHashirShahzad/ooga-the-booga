@@ -19,16 +19,16 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bcewn"]
-polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3650, -1745, 3650, -1482, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fjysh"]
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3872, -1819, 3867, -1559, 3989, -1536, 4142, -1733, 4377, -1653, 4334, -1342, 3665, -1381, 3665, -1580, 3579, -1642, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6mfmt"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bcewn"]
 polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qegch"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6mfmt"]
 polygon = PackedVector2Array(540, -568, 785, -501, 414, -535)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jai45"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qegch"]
 polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
 
 [node name="Level2" type="Node2D" groups=["level"]]
@@ -72,12 +72,12 @@ _preview_noise = false
 z_index = -4
 offset_left = -1633.0
 offset_top = -1685.0
-offset_right = 5186.0
+offset_right = 5904.0
 offset_bottom = 2361.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="LevelEnd" parent="World" instance=ExtResource("5_bcewn")]
-position = Vector2(4505, 362)
+position = Vector2(5246, 490)
 next_level = ExtResource("6_6mfmt")
 
 [node name="Fuel" parent="World" instance=ExtResource("7_qegch")]
@@ -88,6 +88,11 @@ is_self_destruct = false
 [node name="Fuel2" parent="World" instance=ExtResource("7_qegch")]
 position = Vector2(-507, -509)
 fuel_amount = 3.0
+is_self_destruct = false
+
+[node name="Fuel3" parent="World" instance=ExtResource("7_qegch")]
+position = Vector2(3783, 409)
+fuel_amount = 1.6
 is_self_destruct = false
 
 [node name="Spike1" type="Polygon2D" parent="World"]
@@ -121,15 +126,15 @@ position = Vector2(1011, 1937)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
 build_mode = 1
-polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3650, -1745, 3650, -1482, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3872, -1819, 3867, -1559, 3989, -1536, 4142, -1733, 4377, -1653, 4334, -1342, 3665, -1381, 3665, -1580, 3579, -1642, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
 
 [node name="Polygon2D" parent="World/LevelBuilder" index="1"]
 invert_enabled = true
 invert_border = 1000.0
-polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3650, -1745, 3650, -1482, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3872, -1819, 3867, -1559, 3989, -1536, 4142, -1733, 4377, -1653, 4334, -1342, 3665, -1381, 3665, -1580, 3579, -1642, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1381, -1437, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_bcewn")
+occluder = SubResource("OccluderPolygon2D_fjysh")
 
 [node name="LightPuller" parent="World/LevelBuilder" instance=ExtResource("9_hq01p")]
 position = Vector2(932, -782)
@@ -144,7 +149,7 @@ polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
 polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder2" index="2"]
-occluder = SubResource("OccluderPolygon2D_6mfmt")
+occluder = SubResource("OccluderPolygon2D_bcewn")
 
 [node name="LevelBuilder3" parent="World" instance=ExtResource("8_jai45")]
 position = Vector2(2318, 1034)
@@ -156,7 +161,7 @@ polygon = PackedVector2Array(540, -568, 785, -501, 414, -535)
 polygon = PackedVector2Array(540, -568, 785, -501, 414, -535)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder3" index="2"]
-occluder = SubResource("OccluderPolygon2D_qegch")
+occluder = SubResource("OccluderPolygon2D_6mfmt")
 
 [node name="LevelBuilder4" parent="World" instance=ExtResource("8_jai45")]
 position = Vector2(3129, 1027)
@@ -168,15 +173,15 @@ polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
 polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder4" index="2"]
-occluder = SubResource("OccluderPolygon2D_jai45")
+occluder = SubResource("OccluderPolygon2D_qegch")
 
 [node name="PointLight2D" type="PointLight2D" parent="World"]
-position = Vector2(3310, 729)
+position = Vector2(3308, 500)
 color = Color(0.858824, 0.901961, 0.913725, 1)
-energy = 0.39
+energy = 0.2
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
-texture_scale = 10.0
+texture_scale = 5.0
 
 [node name="KillZone" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(72, 1020)
