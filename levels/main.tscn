@@ -113,4 +113,15 @@ position = Vector2(505, 457)
 [node name="LightPuller" parent="." instance=ExtResource("10_jw1n3")]
 position = Vector2(1310, 299)
 
+[node name="Label" type="Label" parent="."]
+offset_left = 566.0
+offset_top = 93.0
+offset_right = 1071.0
+offset_bottom = 216.0
+rotation = -0.0199733
+theme_override_font_sizes/font_size = 40
+text = "THE END!
+Testing area"
+horizontal_alignment = 1
+
 [editable path="LevelBuilder"]

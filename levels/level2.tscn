@@ -212,40 +212,61 @@ shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 3.0
 
-[node name="PointLight2D2" type="PointLight2D" parent="World"]
+[node name="RedLight" type="PointLight2D" parent="World"]
 position = Vector2(43, 1013)
 color = Color(0.583457, 0.220422, 0.234526, 1)
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 2.0
 
-[node name="PointLight2D4" type="PointLight2D" parent="World"]
+[node name="RedLight2" type="PointLight2D" parent="World"]
 position = Vector2(1252, 1076)
 color = Color(0.583457, 0.220422, 0.234526, 1)
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 1.5
 
-[node name="PointLight2D8" type="PointLight2D" parent="World"]
+[node name="BlueLight" type="PointLight2D" parent="World"]
+position = Vector2(1940, 1329)
+color = Color(0.720261, 0.93926, 0.963192, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 1.5
+
+[node name="RedLight3" type="PointLight2D" parent="World"]
 position = Vector2(1316, 873)
 color = Color(0.583457, 0.220422, 0.234526, 1)
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
 
-[node name="PointLight2D6" type="PointLight2D" parent="World"]
+[node name="RedLight4" type="PointLight2D" parent="World"]
 position = Vector2(3024, 501)
 color = Color(0.583457, 0.220422, 0.234526, 1)
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 0.5
 
-[node name="PointLight2D5" type="PointLight2D" parent="World"]
+[node name="RedLight5" type="PointLight2D" parent="World"]
 position = Vector2(1411, 869)
 color = Color(0.583457, 0.220422, 0.234526, 1)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 0.8
+
+[node name="RedLight6" type="PointLight2D" parent="World"]
+position = Vector2(2805, 1205)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 5.0
+
+[node name="RedLight7" type="PointLight2D" parent="World"]
+position = Vector2(3856, 1084)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 5.0
 
 [node name="Label" type="Label" parent="World"]
 z_index = -2
