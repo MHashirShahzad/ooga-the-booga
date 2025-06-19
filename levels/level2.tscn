@@ -247,6 +247,17 @@ shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 0.8
 
+[node name="Label" type="Label" parent="World"]
+z_index = -2
+offset_left = 425.0
+offset_top = 528.0
+offset_right = 930.0
+offset_bottom = 651.0
+rotation = 0.242081
+theme_override_font_sizes/font_size = 40
+text = "Danger!"
+horizontal_alignment = 1
+
 [node name="KillZone" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(72, 1020)
 rotation = 0.0431308

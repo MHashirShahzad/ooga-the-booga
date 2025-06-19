@@ -33,6 +33,10 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addon
 
 level=""
 
+[gui]
+
+theme/custom_font="uid://5isbtj4fnabu"
+
 [input]
 
 left={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ca4iw0wk4yhcj"]
+[gd_scene load_steps=16 format=3 uid="uid://ca4iw0wk4yhcj"]
 
 [ext_resource type="Texture2D" uid="uid://sb22tocblro" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://w8je44c2qm4j" path="res://player/player.gd" id="1_onrkg"]
@@ -10,9 +10,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 62.1289
 
-[sub_resource type="Curve" id="Curve_boad6"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.139205, 0.506145), 0.0, 0.0, 0, 0, Vector2(0.244318, 0.172067), 0.0, 0.0, 0, 0, Vector2(0.369318, 0.513408), 0.0, 0.0, 0, 0, Vector2(0.5, 0.17933), 0.0, 0.0, 0, 0, Vector2(0.607955, 0.484358), 0.0, 0.0, 0, 0, Vector2(0.75, 0.186592), 0.0, 0.0, 0, 0, Vector2(0.866477, 0.506145), 0.0, 0.0, 0, 0, Vector2(1, 0.0421822), 0.0, 0.0, 0, 0]
-point_count = 9
+[sub_resource type="Curve" id="Curve_g6k8r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.207386, 0.469832), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_g6k8r"]
 colors = PackedColorArray(1, 1, 1, 0.729412, 0.858824, 0.901961, 0.913725, 0)
@@ -191,6 +191,10 @@ _data = {
 &"refill_fuel": SubResource("Animation_g6k8r")
 }
 
+[sub_resource type="Curve" id="Curve_boad6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.139205, 0.506145), 0.0, 0.0, 0, 0, Vector2(0.244318, 0.172067), 0.0, 0.0, 0, 0, Vector2(0.369318, 0.513408), 0.0, 0.0, 0, 0, Vector2(0.5, 0.17933), 0.0, 0.0, 0, 0, Vector2(0.607955, 0.484358), 0.0, 0.0, 0, 0, Vector2(0.75, 0.186592), 0.0, 0.0, 0, 0, Vector2(0.866477, 0.506145), 0.0, 0.0, 0, 0, Vector2(1, 0.0421822), 0.0, 0.0, 0, 0]
+point_count = 9
+
 [sub_resource type="Gradient" id="Gradient_rgyib"]
 offsets = PackedFloat32Array(0, 0.503067, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
@@ -256,8 +260,12 @@ local_coords = true
 emission_shape = 1
 emission_sphere_radius = 64.0
 gravity = Vector2(0, -400)
-scale_amount_min = 0.7
-scale_amount_curve = SubResource("Curve_boad6")
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_g6k8r")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
 color = Color(0.858824, 0.901961, 0.913725, 1)
 color_ramp = SubResource("Gradient_g6k8r")
 

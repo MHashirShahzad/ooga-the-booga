@@ -84,6 +84,10 @@ color = Color(0.360784, 0.356863, 0.356863, 1)
 position = Vector2(2806, 925)
 next_level = ExtResource("6_omn1t")
 
+[node name="PointLight2D" parent="World/LevelEnd" index="3"]
+shadow_enabled = true
+texture_scale = 4.0
+
 [node name="Fuel" parent="World" instance=ExtResource("5_8bcou")]
 position = Vector2(122, 676)
 fuel_amount = 2.5
@@ -206,13 +210,26 @@ texture = ExtResource("10_lf3p4")
 texture_scale = 3.0
 
 [node name="PointLight2D3" type="PointLight2D" parent="World"]
-position = Vector2(3473, 563)
+position = Vector2(3727, 673)
 color = Color(0.858824, 0.901961, 0.913725, 1)
 energy = 0.39
 shadow_enabled = true
 texture = ExtResource("10_lf3p4")
-texture_scale = 6.0
+texture_scale = 3.0
 
+[node name="Label" type="Label" parent="."]
+z_index = -2
+offset_left = 639.0
+offset_top = 560.0
+offset_right = 1144.0
+offset_bottom = 683.0
+rotation = 0.0223138
+theme_override_font_sizes/font_size = 40
+text = "Springs?
+"
+horizontal_alignment = 1
+
+[editable path="World/LevelEnd"]
 [editable path="World/LevelBuilder"]
 [editable path="World/LevelBuilder2"]
 [editable path="World/LevelBuilder4"]
