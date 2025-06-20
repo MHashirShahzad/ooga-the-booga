@@ -229,13 +229,6 @@ shadow_enabled = true
 texture = ExtResource("10_fjysh")
 texture_scale = 1.5
 
-[node name="BlueLight" type="PointLight2D" parent="World"]
-position = Vector2(1940, 1329)
-color = Color(0.720261, 0.93926, 0.963192, 1)
-shadow_enabled = true
-texture = ExtResource("10_fjysh")
-texture_scale = 1.5
-
 [node name="RedLight3" type="PointLight2D" parent="World"]
 position = Vector2(1316, 873)
 color = Color(0.583457, 0.220422, 0.234526, 1)

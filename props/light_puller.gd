@@ -17,7 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var tween = get_tree().create_tween()
 		player = body
 		player.is_being_pulled = true
-		tween.tween_property(player.sprite_2d, "scale", Vector2(.9, 1.1), .2).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(player.sprite_2d, "scale", Vector2(.95, 1.05), .2).set_trans(Tween.TRANS_QUAD)
 
 
 func _on_body_exited(body: Node2D) -> void:
