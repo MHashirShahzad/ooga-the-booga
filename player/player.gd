@@ -129,7 +129,7 @@ func apply_gravity(delta) -> void:
 		if velocity.y > 1000:
 			velocity.y = 1000
 			
-	print(velocity.y)
+
 	
 func handle_input():
 	if !can_take_input: return

@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_nq7ub"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_7ej46"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="5_tq58f"]
-[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="6_k34hm"]
 [ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="7_c750c"]
 [ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="8_283cd"]
+[ext_resource type="PackedScene" uid="uid://banqrmtj8owcx" path="res://levels/level4.tscn" id="8_cpuyl"]
 [ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="10_4lmri"]
 [ext_resource type="PackedScene" uid="uid://byxlqnokaiww0" path="res://props/kill_zone.tscn" id="11_i3cyh"]
 [ext_resource type="PackedScene" uid="uid://c5v5gioj5ik0h" path="res://props/guiding_arrow.tscn" id="13_rg68n"]
@@ -91,7 +91,7 @@ rotation = 1.25478
 
 [node name="LevelEnd" parent="World" instance=ExtResource("5_tq58f")]
 position = Vector2(2238, 6783)
-next_level = ExtResource("6_k34hm")
+next_level = ExtResource("8_cpuyl")
 
 [node name="PointLight2D" parent="World/LevelEnd" index="3"]
 energy = 1.0
@@ -149,6 +149,16 @@ offset_left = 2189.0
 offset_top = 3730.0
 offset_right = 2727.0
 offset_bottom = 3908.0
+theme_override_font_sizes/font_size = 120
+text = "!"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="World"]
+z_index = -2
+offset_left = 2624.0
+offset_top = 5985.0
+offset_right = 3162.0
+offset_bottom = 6163.0
 theme_override_font_sizes/font_size = 120
 text = "!"
 horizontal_alignment = 1

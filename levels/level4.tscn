@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://banqrmtj8owcx"]
+[gd_scene load_steps=19 format=3 uid="uid://banqrmtj8owcx"]
 
 [ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_cc5tm"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_mj76i"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="5_gh4cy"]
 [ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="6_qi51e"]
 [ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="7_lw0yu"]
+[ext_resource type="PackedScene" uid="uid://byurm6yhi1drh" path="res://props/light_puller.tscn" id="8_mdw0g"]
+[ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="8_mj76i"]
+[ext_resource type="PackedScene" uid="uid://c5v5gioj5ik0h" path="res://props/guiding_arrow.tscn" id="10_naavy"]
+[ext_resource type="PackedScene" uid="uid://byxlqnokaiww0" path="res://props/kill_zone.tscn" id="11_gh4cy"]
+[ext_resource type="PackedScene" uid="uid://tck5qbqr3nug" path="res://props/spike_ball.tscn" id="12_qi51e"]
+[ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="13_lw0yu"]
 
 [sub_resource type="Resource" id="Resource_p8yh6"]
 script = ExtResource("4_naavy")
@@ -14,23 +20,146 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cc5tm"]
-polygon = PackedVector2Array(-736, -1376, 722, -1547, 1702, -1425, 2418, -729, 3029, 866, 3029, 866, 3135, 1876, 3167, 3098, 2580, 4160, 1247, 4081, 264, 3653, -878, 4049, -2084, 3970, -2258, 2622, -2310, 1594, -2227, 688, -2322, -368, -1551, -1270)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lw0yu"]
+polygon = PackedVector2Array(-1254, -1352, -1165.44, -1399.27, -580, -1440, -524, -1512, -301, -1524, -100, -1498, 78, -1544, 213, -1497, 295, -1349, 228, -1180, 65, -1214, 20, -1210, 46.5823, -1031.36, 310, -886, 759, -862, 1025, -725, 1353, -582, 1441, -222, 1537, 28, 1284.94, 73.723, 1183, 17, 1048, 69, 1014, 124, 832.757, 156.609, 830, 458, 870, 723, 791, 1161, 653.586, 1462.33, 726, 1453, 765, 1619, 815, 1619, 809, 1445, 1159, 1414, 1448, 1450, 1504, 1676, 1334, 1920, 1043, 2011, 996, 1891, 921, 1894, 903, 2029, 571, 1985, 336, 1861, 220, 1664, 337, 1448, 484, 1091, 587, 720, 533, 466, 445, 109, 612, -148, 1149, -326, 1071, -416, 795, -383, 570, -531, 163, -498, -146, -592, -269, -899, -201, -1209, -994, -1229, -1041, -1227, -1042, -286, -1287, -320, -1913, -297, -2322, -368, -2391, -541, -2333.77, -697.902, -1923, -766, -1514, -716, -1368, -743, -1319.1, -882.393, -1284.41, -1242.46)
 
-[node name="Level2" type="Node2D" groups=["level"]]
+[sub_resource type="Animation" id="Animation_qi51e"]
+resource_name = "spike"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillZone:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(386, -0.25, 0, 0.25, 0, 510, -0.25, 0, 0.25, 0, 386, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.404391, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KillZone2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(825, -0.25, 0, 0.25, 0, 732, -0.25, 0, 0.25, 0, 825, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KillZone3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1116, -0.25, 0, 0.25, 0, 1067, -0.25, 0, 0.25, 0, 1116, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KillZone3:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(797, -0.25, 0, 0.25, 0, 748, -0.25, 0, 0.25, 0, 797, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("KillZone4:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(159, -0.25, 0, 0.25, 0, 396, -0.25, 0, 0.25, 0, 159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.415191, 1)
+}
+
+[sub_resource type="Animation" id="Animation_lw0yu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillZone:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(386, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KillZone2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(794, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KillZone3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1116, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KillZone3:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(797, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("KillZone4:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(289, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lw0yu"]
+_data = {
+&"RESET": SubResource("Animation_lw0yu"),
+&"spike": SubResource("Animation_qi51e")
+}
+
+[node name="Level4" type="Node2D" groups=["level"]]
 
 [node name="LevelEssentials" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_cc5tm")]
-position = Vector2(376, 737)
+position = Vector2(-914, 1431)
 
 [node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
-visible = false
 color = Color(0.0509804, 0.054902, 0.0392157, 1)
 
 [node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
 physics_interpolation_mode = 1
-position = Vector2(376, 737)
+position = Vector2(-914, 1431)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 
@@ -41,7 +170,7 @@ script = ExtResource("2_mj76i")
 
 [node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(376, 737)
+position = Vector2(-914, 1431)
 script = ExtResource("3_mdw0g")
 follow_mode = 5
 follow_target = NodePath("../CharacterBody2D")
@@ -57,46 +186,194 @@ _preview_noise = false
 
 [node name="ColorRect" type="ColorRect" parent="World"]
 z_index = -4
-offset_left = -1633.0
-offset_top = -1685.0
-offset_right = 5904.0
-offset_bottom = 2361.0
+offset_left = -2366.0
+offset_top = -954.0
+offset_right = 3675.0
+offset_bottom = 4665.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="LevelEnd" parent="World" instance=ExtResource("5_gh4cy")]
-position = Vector2(1235, 5170)
+position = Vector2(2177, 3670)
 next_level = ExtResource("6_qi51e")
 
 [node name="PointLight2D" parent="World/LevelEnd" index="3"]
 energy = 1.0
 shadow_enabled = true
-texture_scale = 4.0
+texture_scale = 6.0
 
 [node name="LevelBuilder" parent="World" instance=ExtResource("7_lw0yu")]
 position = Vector2(1011, 1937)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
 build_mode = 1
-polygon = PackedVector2Array(-736, -1376, 722, -1547, 1702, -1425, 2418, -729, 3029, 866, 3029, 866, 3135, 1876, 3167, 3098, 2580, 4160, 1247, 4081, 264, 3653, -878, 4049, -2084, 3970, -2258, 2622, -2310, 1594, -2227, 688, -2322, -368, -1551, -1270)
+polygon = PackedVector2Array(-1254, -1352, -1165.44, -1399.27, -580, -1440, -524, -1512, -301, -1524, -100, -1498, 78, -1544, 213, -1497, 295, -1349, 228, -1180, 65, -1214, 20, -1210, 46.5823, -1031.36, 310, -886, 759, -862, 1025, -725, 1353, -582, 1441, -222, 1537, 28, 1284.94, 73.723, 1183, 17, 1048, 69, 1014, 124, 832.757, 156.609, 830, 458, 870, 723, 791, 1161, 653.586, 1462.33, 726, 1453, 765, 1619, 815, 1619, 809, 1445, 1159, 1414, 1448, 1450, 1504, 1676, 1334, 1920, 1043, 2011, 996, 1891, 921, 1894, 903, 2029, 571, 1985, 336, 1861, 220, 1664, 337, 1448, 484, 1091, 587, 720, 533, 466, 445, 109, 612, -148, 1149, -326, 1071, -416, 795, -383, 570, -531, 163, -498, -146, -592, -269, -899, -201, -1209, -994, -1229, -1041, -1227, -1042, -286, -1287, -320, -1913, -297, -2322, -368, -2391, -541, -2333.77, -697.902, -1923, -766, -1514, -716, -1368, -743, -1319.1, -882.393, -1284.41, -1242.46)
 
 [node name="Polygon2D" parent="World/LevelBuilder" index="1"]
 invert_enabled = true
 invert_border = 1000.0
-polygon = PackedVector2Array(-736, -1376, 722, -1547, 1702, -1425, 2418, -729, 3029, 866, 3029, 866, 3135, 1876, 3167, 3098, 2580, 4160, 1247, 4081, 264, 3653, -878, 4049, -2084, 3970, -2258, 2622, -2310, 1594, -2227, 688, -2322, -368, -1551, -1270)
+polygon = PackedVector2Array(-1254, -1352, -1165.44, -1399.27, -580, -1440, -524, -1512, -301, -1524, -100, -1498, 78, -1544, 213, -1497, 295, -1349, 228, -1180, 65, -1214, 20, -1210, 46.5823, -1031.36, 310, -886, 759, -862, 1025, -725, 1353, -582, 1441, -222, 1537, 28, 1284.94, 73.723, 1183, 17, 1048, 69, 1014, 124, 832.757, 156.609, 830, 458, 870, 723, 791, 1161, 653.586, 1462.33, 726, 1453, 765, 1619, 815, 1619, 809, 1445, 1159, 1414, 1448, 1450, 1504, 1676, 1334, 1920, 1043, 2011, 996, 1891, 921, 1894, 903, 2029, 571, 1985, 336, 1861, 220, 1664, 337, 1448, 484, 1091, 587, 720, 533, 466, 445, 109, 612, -148, 1149, -326, 1071, -416, 795, -383, 570, -531, 163, -498, -146, -592, -269, -899, -201, -1209, -994, -1229, -1041, -1227, -1042, -286, -1287, -320, -1913, -297, -2322, -368, -2391, -541, -2333.77, -697.902, -1923, -766, -1514, -716, -1368, -743, -1319.1, -882.393, -1284.41, -1242.46)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_cc5tm")
+occluder = SubResource("OccluderPolygon2D_lw0yu")
 
 [node name="Label" type="Label" parent="World"]
 z_index = -2
-offset_left = 425.0
-offset_top = 528.0
-offset_right = 930.0
-offset_bottom = 651.0
-rotation = 0.242081
+offset_left = -49.0
+offset_top = 568.0
+offset_right = 456.0
+offset_bottom = 691.0
 theme_override_font_sizes/font_size = 40
-text = "Danger!"
+text = "Spikes?"
 horizontal_alignment = 1
+
+[node name="LightPuller" parent="World" instance=ExtResource("8_mdw0g")]
+position = Vector2(-150, 1449)
+
+[node name="Fuel2" parent="World" instance=ExtResource("8_mj76i")]
+position = Vector2(-586, 1481)
+fuel_amount = 2.4
+
+[node name="Fuel3" parent="World" instance=ExtResource("8_mj76i")]
+position = Vector2(1174, 631)
+fuel_amount = 2.7
+
+[node name="Fuel4" parent="World" instance=ExtResource("8_mj76i")]
+position = Vector2(2276, 1897)
+fuel_amount = 2.0
+
+[node name="GuidingArrow" parent="World" instance=ExtResource("10_naavy")]
+position = Vector2(60, 643)
+
+[node name="GuidingArrow2" parent="World" instance=ExtResource("10_naavy")]
+position = Vector2(1898, 1921)
+rotation = 2.3069
+
+[node name="Spikes" type="Node2D" parent="World"]
+
+[node name="KillZone" parent="World/Spikes" instance=ExtResource("11_gh4cy")]
+position = Vector2(330, 386)
+
+[node name="CollisionPolygon2D" parent="World/Spikes/KillZone" index="0"]
+polygon = PackedVector2Array(30, -22, 14, 137, -7, -18)
+
+[node name="Polygon2D" parent="World/Spikes/KillZone" index="1"]
+position = Vector2(-4, 39)
+polygon = PackedVector2Array(19, 109, -7, -64, 36, -62)
+
+[node name="RedLight" parent="World/Spikes/KillZone" index="2"]
+visible = true
+position = Vector2(15, 125.028)
+texture_scale = 1.0
+
+[node name="KillZone2" parent="World/Spikes" instance=ExtResource("11_gh4cy")]
+position = Vector2(621, 794)
+rotation = 3.14159
+
+[node name="CollisionPolygon2D" parent="World/Spikes/KillZone2" index="0"]
+polygon = PackedVector2Array(30, -22, 11, 165, -7, -18)
+
+[node name="Polygon2D" parent="World/Spikes/KillZone2" index="1"]
+position = Vector2(-4, 39)
+polygon = PackedVector2Array(14, 134, -7, -64, 36, -62)
+
+[node name="RedLight" parent="World/Spikes/KillZone2" index="2"]
+visible = true
+position = Vector2(14, 113)
+texture_scale = 1.0
+
+[node name="KillZone3" parent="World/Spikes" instance=ExtResource("11_gh4cy")]
+position = Vector2(1116, 797)
+rotation = 2.35619
+
+[node name="CollisionPolygon2D" parent="World/Spikes/KillZone3" index="0"]
+polygon = PackedVector2Array(30, -22, 11, 165, -7, -18)
+
+[node name="Polygon2D" parent="World/Spikes/KillZone3" index="1"]
+position = Vector2(-4, 39)
+polygon = PackedVector2Array(14, 134, -7, -64, 36, -62)
+
+[node name="RedLight" parent="World/Spikes/KillZone3" index="2"]
+visible = true
+position = Vector2(14, 113)
+texture_scale = 1.0
+
+[node name="KillZone4" parent="World/Spikes" instance=ExtResource("11_gh4cy")]
+position = Vector2(931, 289)
+
+[node name="CollisionPolygon2D" parent="World/Spikes/KillZone4" index="0"]
+polygon = PackedVector2Array(30, -22, 9, 270, -7, -18)
+
+[node name="Polygon2D" parent="World/Spikes/KillZone4" index="1"]
+position = Vector2(-4, 39)
+polygon = PackedVector2Array(14, 255, -7, -64, 36, -62)
+
+[node name="RedLight" parent="World/Spikes/KillZone4" index="2"]
+visible = true
+position = Vector2(10, 284)
+texture_scale = 1.0
+
+[node name="AniPlayer" type="AnimationPlayer" parent="World/Spikes"]
+libraries = {
+&"": SubResource("AnimationLibrary_lw0yu")
+}
+autoplay = "spike"
+
+[node name="SpikeBalls" type="Node2D" parent="World"]
+
+[node name="SpikeBall" parent="World/SpikeBalls" instance=ExtResource("12_qi51e")]
+position = Vector2(1405, 1402)
+rotation = 1.51879
+scale = Vector2(5, 5)
+rotation_speed_multiplier = 200
+
+[node name="SpikeBall2" parent="World/SpikeBalls" instance=ExtResource("12_qi51e")]
+position = Vector2(1847, 1138)
+rotation = 1.51879
+scale = Vector2(5, 5)
+rotation_speed_multiplier = 200
+
+[node name="PointLight2D" type="PointLight2D" parent="World/SpikeBalls"]
+position = Vector2(973, 1227)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+shadow_enabled = true
+texture = ExtResource("13_lw0yu")
+texture_scale = 5.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="World/SpikeBalls"]
+position = Vector2(2405, 1650)
+color = Color(0.858824, 0.901961, 0.913725, 1)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("13_lw0yu")
+texture_scale = 3.0
+
+[node name="Spikes2" type="Node2D" parent="World"]
+
+[node name="KillZone" parent="World/Spikes2" instance=ExtResource("11_gh4cy")]
+position = Vector2(1515, 2471)
+
+[node name="CollisionPolygon2D" parent="World/Spikes2/KillZone" index="0"]
+polygon = PackedVector2Array(78, -210, 151, 211, 88, 526, 13, 538, -49, 549, 86, 649, -119, 654, -20, 13, -15, -205)
+
+[node name="Polygon2D" parent="World/Spikes2/KillZone" index="1"]
+position = Vector2(55, -4)
+polygon = PackedVector2Array(-159, -222, 44, -200, -72, -166, -20, -136, -76.3201, -103.358, -78, -79, 61, -139, -65, -19, 18, -35, -69, 33, 70, -36, -43, 76, 88, 44, -44, 114, 112, 121, -44, 156, 109, 209, -22, 189, 96, 259, -39, 241, 99, 321, 34.171, 311.796, 26, 345, -6.29727, 306.05, -63, 298, 47, 407, -65, 356, 62, 458, -107, 406, 72, 534, -131, 451, -20, 550, -122, 503, -187.279, 552.138, 41, 656, -228.939, 627.006, -269, 699)
+
+[node name="RedLight" parent="World/Spikes2/KillZone" index="2"]
+visible = true
+position = Vector2(83, 0)
+
+[node name="RedLight2" type="PointLight2D" parent="World/Spikes2/KillZone"]
+position = Vector2(58, 395)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("13_lw0yu")
+texture_scale = 5.0
 
 [editable path="World/LevelEnd"]
 [editable path="World/LevelBuilder"]
+[editable path="World/Spikes/KillZone"]
+[editable path="World/Spikes/KillZone2"]
+[editable path="World/Spikes/KillZone3"]
+[editable path="World/Spikes/KillZone4"]
+[editable path="World/Spikes2/KillZone"]
