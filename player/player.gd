@@ -116,6 +116,15 @@ func apply_gravity(delta) -> void:
 			velocity += get_gravity() * delta * 1.25
 	else: # not falling
 		velocity += get_gravity() * delta
+	
+	# terminal velocity
+	if is_gliding:
+		if velocity.y > 400:
+			velocity.y = 400
+	elif !is_ground_pounding: # should not be ground pounding
+		if velocity.y > 1000:
+			velocity.y = 1000
+			
 	print(velocity.y)
 	
 func handle_input():
@@ -180,6 +189,23 @@ func handle_input():
 		glider_trail_vfx.can_spawn_new_points = false
 		glider_trail_vfx2.can_spawn_new_points = false
 	
+	if Input.is_action_just_pressed("parachute"):
+		if is_ground_pounding:
+			ground_pound_cancel()
+			
+	
+func ground_pound_cancel() -> void:
+	is_ground_pounding = false
+	self.velocity.y = -100
+	
+	var tween : Tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(diamond_2d,"rotation_degrees", 360 + 45, 0.3)
+	await tween.finished
+	diamond_2d.rotation_degrees = 45
+	tween.kill()
+
 func jump():
 	jump_count = jump_count + 1
 	if super_jump_timer > 0:
