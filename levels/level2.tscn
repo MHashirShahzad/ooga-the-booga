@@ -21,7 +21,7 @@ transition = 0
 ease = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bcewn"]
-polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3839, -1825, 4060, -1765, 4123, -1772, 4377, -1653, 4334, -1342, 3665, -1381, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1461, -1438, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3839, -1825, 4060, -1765, 4123, -1772, 4428, -2040, 4628, -2058, 4587, -2288, 4621, -2639, 4552, -2943, 5050, -2951, 5331, -2990, 5462, -2772, 5579, -2752, 5587, -2855, 5653, -2933, 5726, -2978, 5889, -2977, 6060, -2865, 6086, -2568, 5979, -2380, 5760, -2324, 5647, -2350, 5670, -2480, 5574, -2487, 5502.13, -2373.69, 5075.47, -2448.79, 5093, -2103, 5126, -1794, 5059, -1539, 4889, -1535, 4369, -1528, 4060, -1370, 3665, -1381, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1461, -1438, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6mfmt"]
 polygon = PackedVector2Array(344, -647, 801, -537, 683, -542, 444, -577)
@@ -40,7 +40,6 @@ polygon = PackedVector2Array(384, -490, 691, -542, 629, -571, 479, -519)
 position = Vector2(376, 737)
 
 [node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
-visible = false
 color = Color(0.0509804, 0.054902, 0.0392157, 1)
 
 [node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
@@ -79,7 +78,7 @@ offset_bottom = 2361.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="LevelEnd" parent="World" instance=ExtResource("5_bcewn")]
-position = Vector2(5246, 490)
+position = Vector2(6923, -659)
 next_level = ExtResource("6_bcewn")
 
 [node name="PointLight2D" parent="World/LevelEnd" index="3"]
@@ -94,13 +93,12 @@ is_self_destruct = false
 
 [node name="Fuel2" parent="World" instance=ExtResource("7_qegch")]
 position = Vector2(-507, -509)
-fuel_amount = 3.0
+fuel_amount = 5.0
 is_self_destruct = false
 
 [node name="Fuel3" parent="World" instance=ExtResource("7_qegch")]
-position = Vector2(3783, 409)
-fuel_amount = 1.6
-is_self_destruct = false
+position = Vector2(3723, 353)
+fuel_amount = 2.0
 
 [node name="Spike1" type="Polygon2D" parent="World"]
 z_index = 1
@@ -133,18 +131,21 @@ position = Vector2(1011, 1937)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
 build_mode = 1
-polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3839, -1825, 4060, -1765, 4123, -1772, 4377, -1653, 4334, -1342, 3665, -1381, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1461, -1438, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3839, -1825, 4060, -1765, 4123, -1772, 4428, -2040, 4628, -2058, 4587, -2288, 4621, -2639, 4552, -2943, 5050, -2951, 5331, -2990, 5462, -2772, 5579, -2752, 5587, -2855, 5653, -2933, 5726, -2978, 5889, -2977, 6060, -2865, 6086, -2568, 5979, -2380, 5760, -2324, 5647, -2350, 5670, -2480, 5574, -2487, 5502.13, -2373.69, 5075.47, -2448.79, 5093, -2103, 5126, -1794, 5059, -1539, 4889, -1535, 4369, -1528, 4060, -1370, 3665, -1381, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1461, -1438, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
 
 [node name="Polygon2D" parent="World/LevelBuilder" index="1"]
 invert_enabled = true
 invert_border = 1000.0
-polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3839, -1825, 4060, -1765, 4123, -1772, 4377, -1653, 4334, -1342, 3665, -1381, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1461, -1438, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
+polygon = PackedVector2Array(-750, -850, -1140, -877, -1369, -1267, -1470, -2115, -1289, -2166, -930, -2146, -1158, -2229, -1527, -2295, -1668, -2367, -1655, -2643, -1486, -2764, -1161, -2802, -1004.41, -2515.77, -918, -2492, 184.328, -2437.65, 455, -1637, 282, -1617, 534, -1571, 441, -2425, 1201, -2552, 1713, -2357, 2385, -2250, 2802, -1934, 3434, -1993, 3839, -1825, 4060, -1765, 4123, -1772, 4428, -2040, 4628, -2058, 4587, -2288, 4621, -2639, 4552, -2943, 5050, -2951, 5331, -2990, 5462, -2772, 5579, -2752, 5587, -2855, 5653, -2933, 5726, -2978, 5889, -2977, 6060, -2865, 6086, -2568, 5979, -2380, 5760, -2324, 5647, -2350, 5670, -2480, 5574, -2487, 5502.13, -2373.69, 5075.47, -2448.79, 5093, -2103, 5126, -1794, 5059, -1539, 4889, -1535, 4369, -1528, 4060, -1370, 3665, -1381, 3423, -1420, 3146, -1442, 3279, -1038, 3159, -721, 2621, -723, 2009, -628, 1457, -655, 1461, -1438, 1073, -1337, 1080, -609, 739, -564, 655, -622, 544.393, -631.686, 547, -817, 522.58, -1027.95, 308, -1049, 272, -947, 262, -794, 211, -658, 189.076, -632.168, -225, -729, -321, -788, -207, -943, -328, -1033, -781, -1132, -796, -1031, -709, -970)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
 occluder = SubResource("OccluderPolygon2D_bcewn")
 
 [node name="LightPuller" parent="World/LevelBuilder" instance=ExtResource("9_hq01p")]
 position = Vector2(932, -782)
+
+[node name="GuidingArrow" parent="World/LevelBuilder" instance=ExtResource("13_bcewn")]
+position = Vector2(2709, -1585)
 
 [node name="LevelBuilder2" parent="World" instance=ExtResource("8_jai45")]
 position = Vector2(294, 650)
@@ -293,6 +294,17 @@ text = "Ooga The Booga
 was here"
 horizontal_alignment = 1
 
+[node name="Label3" type="Label" parent="World"]
+z_index = -2
+offset_left = 5534.0
+offset_top = -176.0
+offset_right = 6039.0
+offset_bottom = 1.99995
+rotation = -0.0149893
+theme_override_font_sizes/font_size = 120
+text = "!"
+horizontal_alignment = 1
+
 [node name="KillZone" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(72, 1020)
 rotation = 0.0431308
@@ -343,6 +355,23 @@ position = Vector2(77.2642, -43.7068)
 energy = 0.5
 texture_scale = 1.0
 
+[node name="KillZone9" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(6288, -536)
+rotation = 0.121745
+
+[node name="CollisionPolygon2D" parent="KillZone9" index="0"]
+position = Vector2(16.4925, -32.2708)
+polygon = PackedVector2Array(14.3486, 144.355, -53.2075, 127.434, -65.6426, -97.7224)
+
+[node name="Polygon2D" parent="KillZone9" index="1"]
+polygon = PackedVector2Array(-58.5142, 131.076, -59.6787, -183.108, 48.9932, 95.7589)
+
+[node name="RedLight" parent="KillZone9" index="2"]
+visible = true
+position = Vector2(-18.938, -14.8097)
+energy = 0.5
+texture_scale = 1.0
+
 [node name="KillZone6" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(4971, 154)
 rotation = 0.121745
@@ -360,11 +389,56 @@ position = Vector2(17.8832, 39.1178)
 energy = 0.5
 texture_scale = 1.0
 
+[node name="KillZone7" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(5754, -196)
+rotation = 0.121745
+
+[node name="CollisionPolygon2D" parent="KillZone7" index="0"]
+position = Vector2(16.4925, -32.2708)
+polygon = PackedVector2Array(-17.8867, -3.82709, -156.327, 50.387, -152.836, 185.967, -254.524, 178.259, -214.358, -3.96777)
+
+[node name="Polygon2D" parent="KillZone7" index="1"]
+polygon = PackedVector2Array(-224.846, -59.1315, -231.189, 185.449, -195.24, 51.0891, -125.166, 195.649, -144.475, 37.8257, 27.27, -40.6124)
+
+[node name="RedLight" parent="KillZone7" index="2"]
+visible = true
+position = Vector2(-73.0246, -12.2221)
+energy = 0.5
+texture_scale = 1.0
+
+[node name="RedLight2" type="PointLight2D" parent="KillZone7"]
+position = Vector2(-185.382, 123.427)
+color = Color(0.583457, 0.220422, 0.234526, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("10_fjysh")
+texture_scale = 0.5
+
+[node name="KillZone8" parent="." instance=ExtResource("10_crte6")]
+position = Vector2(5980, -960)
+rotation = 0.121745
+
+[node name="CollisionPolygon2D" parent="KillZone8" index="0"]
+position = Vector2(16.4925, -32.2708)
+polygon = PackedVector2Array(-7.75537, -36.2979, -32.2412, 125.876, -170.112, 151.812, -369.599, 118.794, -396.468, 6.22412)
+
+[node name="Polygon2D" parent="KillZone8" index="1"]
+polygon = PackedVector2Array(-368.466, -63.7234, -318.876, 135.73, -264.813, -48.1965, -130.287, 162.022, -173.858, -62.3472, -102.391, -71.0912, -2.04102, 164.465, -0.71875, -104.688)
+
+[node name="RedLight" parent="KillZone8" index="2"]
+visible = true
+position = Vector2(-181.545, 31.2792)
+texture_scale = 1.0
+
 [node name="Spring" parent="." instance=ExtResource("9_jj0ry")]
 position = Vector2(746, 945)
 rotation = 0.607824
 scale = Vector2(0.4, 0.4)
 launch_velocity = 1150
+
+[node name="Spring2" parent="." instance=ExtResource("9_jj0ry")]
+position = Vector2(5928, 399)
+launch_velocity = 1300
 
 [node name="GuidingArrow" parent="." instance=ExtResource("13_bcewn")]
 position = Vector2(-182, -429)
@@ -384,4 +458,7 @@ rotation = -0.213947
 [editable path="KillZone3"]
 [editable path="KillZone4"]
 [editable path="KillZone5"]
+[editable path="KillZone9"]
 [editable path="KillZone6"]
+[editable path="KillZone7"]
+[editable path="KillZone8"]

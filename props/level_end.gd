@@ -21,6 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 			return
 		player = body
 		player.can_take_input = false
+		TransitionManager.transition_scene_packed(next_level)
 		var new_diamond : Polygon2D = body.diamond_2d.duplicate()
 		new_diamond.scale = Vector2(0,0)
 		new_diamond.color = Color(0.916, 0.917, 0.58)
@@ -30,8 +31,8 @@ func _on_body_entered(body: Node2D) -> void:
 		tween.set_ease(Tween.EASE_IN)
 		tween.set_trans(Tween.TRANS_QUAD)
 		tween.set_parallel(true)
-		tween.tween_property(new_diamond, "scale", Vector2(1,1), 1)
+		tween.tween_property(new_diamond, "scale", Vector2(1,1), .2)
 		await tween.finished
 		tween.kill()
 
-		TransitionManager.transition_scene_packed(next_level)
+		
