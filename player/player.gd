@@ -119,8 +119,8 @@ func apply_gravity(delta) -> void:
 	
 	# terminal velocity
 	if is_gliding:
-		if velocity.y > 400:
-			velocity.y = 400
+		if velocity.y > 350:
+			velocity.y = 350
 	elif !is_ground_pounding: # should not be ground pounding
 		if velocity.y > 1000:
 			velocity.y = 1000
