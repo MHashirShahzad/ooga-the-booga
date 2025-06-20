@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://tck5qbqr3nug"]
+
+[ext_resource type="Script" uid="uid://bqqftuviljccv" path="res://props/spike_ball.gd" id="1_5bqpn"]
+[ext_resource type="PackedScene" uid="uid://byxlqnokaiww0" path="res://props/kill_zone.tscn" id="3_kfck8"]
+[ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="4_38v2e"]
+
+[node name="SpikeBall" type="Node2D"]
+script = ExtResource("1_5bqpn")
+
+[node name="Spikes" type="Polygon2D" parent="."]
+z_index = 1
+color = Color(0.583457, 0.220422, 0.234526, 1)
+invert_border = 1000.0
+polygon = PackedVector2Array(0, -20, 11, -26, 14, -14, 26, -11, 20, 0, 26, 12, 14, 14, 13, 26, 0, 20, -12, 27, -14, 14, -27, 12, -20, 0, -26, -12, -14, -14, -11, -27)
+
+[node name="KillZone" parent="." instance=ExtResource("3_kfck8")]
+
+[node name="CollisionPolygon2D" parent="KillZone" index="0"]
+polygon = PackedVector2Array(20, 0, 14.14, 14.14, 0, 20, -14.14, 14.14, -20, 0, -14.14, -14.14, 0, -20, 14.14, -14.14)
+
+[node name="RedLight" type="PointLight2D" parent="."]
+color = Color(0.583457, 0.220422, 0.234526, 1)
+shadow_enabled = true
+texture = ExtResource("4_38v2e")
+texture_scale = 0.25
+
+[node name="Base" type="Polygon2D" parent="."]
+z_index = 1
+color = Color(0.560784, 0.556863, 0.541176, 1)
+polygon = PackedVector2Array(20, 0, 14.14, 14.14, 0, 20, -14.14, 14.14, -20, 0, -14.14, -14.14, 0, -20, 14.14, -14.14)
+
+[editable path="KillZone"]

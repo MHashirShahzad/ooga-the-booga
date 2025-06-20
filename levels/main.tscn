@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckihqgbfmfhnp"]
+[gd_scene load_steps=14 format=3 uid="uid://ckihqgbfmfhnp"]
 
 [ext_resource type="Script" uid="uid://bec6170d2x5pi" path="res://levels/main.gd" id="1_6et1j"]
 [ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_m1504"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_etqu2"]
 [ext_resource type="PackedScene" uid="uid://dtdig231j65i6" path="res://props/spring.tscn" id="9_etqu2"]
 [ext_resource type="PackedScene" uid="uid://byurm6yhi1drh" path="res://props/light_puller.tscn" id="10_jw1n3"]
+[ext_resource type="PackedScene" uid="uid://tck5qbqr3nug" path="res://props/spike_ball.tscn" id="11_xdh4e"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jw1n3"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xdh4e"]
 polygon = PackedVector2Array(141, -232, 141, -232, 314, -235, 329, 79, 129, 82)
 
 [sub_resource type="Resource" id="Resource_jw1n3"]
@@ -66,7 +67,7 @@ polygon = PackedVector2Array(141, -232, 141, -232, 314, -235, 329, 79, 129, 82)
 
 [node name="LightOccluder2D" parent="LevelBuilder" index="2"]
 position = Vector2(-81, -85)
-occluder = SubResource("OccluderPolygon2D_jw1n3")
+occluder = SubResource("OccluderPolygon2D_xdh4e")
 
 [node name="Fuel" parent="." instance=ExtResource("4_qy63d")]
 position = Vector2(945, 387)
@@ -123,5 +124,9 @@ theme_override_font_sizes/font_size = 40
 text = "THE END!
 Testing area"
 horizontal_alignment = 1
+
+[node name="SpikeBall" parent="." instance=ExtResource("11_xdh4e")]
+position = Vector2(1552, 337)
+scale = Vector2(3, 3)
 
 [editable path="LevelBuilder"]
