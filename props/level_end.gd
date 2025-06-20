@@ -20,6 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if !next_level:
 			return
 		player = body
+		player.can_take_input = false
 		var new_diamond : Polygon2D = body.diamond_2d.duplicate()
 		new_diamond.scale = Vector2(0,0)
 		new_diamond.color = Color(0.916, 0.917, 0.58)

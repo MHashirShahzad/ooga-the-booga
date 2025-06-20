@@ -7,16 +7,14 @@
 [node name="SpikeBall" type="Node2D"]
 script = ExtResource("1_5bqpn")
 
-[node name="Spikes" type="Polygon2D" parent="."]
-z_index = 1
-color = Color(0.583457, 0.220422, 0.234526, 1)
-invert_border = 1000.0
-polygon = PackedVector2Array(0, -20, 11, -26, 14, -14, 26, -11, 20, 0, 26, 12, 14, 14, 13, 26, 0, 20, -12, 27, -14, 14, -27, 12, -20, 0, -26, -12, -14, -14, -11, -27)
-
 [node name="KillZone" parent="." instance=ExtResource("3_kfck8")]
 
 [node name="CollisionPolygon2D" parent="KillZone" index="0"]
 polygon = PackedVector2Array(20, 0, 14.14, 14.14, 0, 20, -14.14, 14.14, -20, 0, -14.14, -14.14, 0, -20, 14.14, -14.14)
+
+[node name="Polygon2D" parent="KillZone" index="1"]
+color = Color(0.583457, 0.220422, 0.234526, 1)
+polygon = PackedVector2Array(0, -20, 11, -26, 14, -14, 26, -11, 20, 0, 26, 12, 14, 14, 13, 26, 0, 20, -12, 27, -14, 14, -27, 12, -20, 0, -26, -12, -14, -14, -11, -27)
 
 [node name="RedLight" type="PointLight2D" parent="."]
 color = Color(0.583457, 0.220422, 0.234526, 1)

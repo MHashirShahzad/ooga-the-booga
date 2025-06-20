@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://banqrmtj8owcx"]
+
+[ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_cc5tm"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_mj76i"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_mdw0g"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_naavy"]
+[ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="5_gh4cy"]
+[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="6_qi51e"]
+[ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="7_lw0yu"]
+
+[sub_resource type="Resource" id="Resource_p8yh6"]
+script = ExtResource("4_naavy")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cc5tm"]
+polygon = PackedVector2Array(-736, -1376, 722, -1547, 1702, -1425, 2418, -729, 3029, 866, 3029, 866, 3135, 1876, 3167, 3098, 2580, 4160, 1247, 4081, 264, 3653, -878, 4049, -2084, 3970, -2258, 2622, -2310, 1594, -2227, 688, -2322, -368, -1551, -1270)
+
+[node name="Level2" type="Node2D" groups=["level"]]
+
+[node name="LevelEssentials" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_cc5tm")]
+position = Vector2(376, 737)
+
+[node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
+visible = false
+color = Color(0.0509804, 0.054902, 0.0392157, 1)
+
+[node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
+physics_interpolation_mode = 1
+position = Vector2(376, 737)
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="LevelEssentials/Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_mj76i")
+
+[node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(376, 737)
+script = ExtResource("3_mdw0g")
+follow_mode = 5
+follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(0.8, 0.8)
+tween_resource = SubResource("Resource_p8yh6")
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+dead_zone_width = 0.1
+dead_zone_height = 0.1
+_preview_noise = false
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+z_index = -4
+offset_left = -1633.0
+offset_top = -1685.0
+offset_right = 5904.0
+offset_bottom = 2361.0
+color = Color(0.360784, 0.356863, 0.356863, 1)
+
+[node name="LevelEnd" parent="World" instance=ExtResource("5_gh4cy")]
+position = Vector2(1235, 5170)
+next_level = ExtResource("6_qi51e")
+
+[node name="PointLight2D" parent="World/LevelEnd" index="3"]
+energy = 1.0
+shadow_enabled = true
+texture_scale = 4.0
+
+[node name="LevelBuilder" parent="World" instance=ExtResource("7_lw0yu")]
+position = Vector2(1011, 1937)
+
+[node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
+build_mode = 1
+polygon = PackedVector2Array(-736, -1376, 722, -1547, 1702, -1425, 2418, -729, 3029, 866, 3029, 866, 3135, 1876, 3167, 3098, 2580, 4160, 1247, 4081, 264, 3653, -878, 4049, -2084, 3970, -2258, 2622, -2310, 1594, -2227, 688, -2322, -368, -1551, -1270)
+
+[node name="Polygon2D" parent="World/LevelBuilder" index="1"]
+invert_enabled = true
+invert_border = 1000.0
+polygon = PackedVector2Array(-736, -1376, 722, -1547, 1702, -1425, 2418, -729, 3029, 866, 3029, 866, 3135, 1876, 3167, 3098, 2580, 4160, 1247, 4081, 264, 3653, -878, 4049, -2084, 3970, -2258, 2622, -2310, 1594, -2227, 688, -2322, -368, -1551, -1270)
+
+[node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
+occluder = SubResource("OccluderPolygon2D_cc5tm")
+
+[node name="Label" type="Label" parent="World"]
+z_index = -2
+offset_left = 425.0
+offset_top = 528.0
+offset_right = 930.0
+offset_bottom = 651.0
+rotation = 0.242081
+theme_override_font_sizes/font_size = 40
+text = "Danger!"
+horizontal_alignment = 1
+
+[editable path="World/LevelEnd"]
+[editable path="World/LevelBuilder"]

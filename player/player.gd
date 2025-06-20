@@ -52,6 +52,7 @@ var is_dead : bool = false
 var is_being_pulled : bool = false
 var is_gliding : bool = false
 var is_ground_pounding : bool = false
+var can_take_input : bool = true
 #endregion
 
 func _ready():
@@ -74,8 +75,7 @@ func _physics_process(delta: float) -> void:
 	# Coyote stuff
 	if is_on_floor(): # current frame on_floor
 		jump_count = 0
-		if jump_buffer_timer > 0:
-			jump()
+
 		 	
 		if not was_on_floor: # previous frame on_floor
 			
@@ -87,6 +87,10 @@ func _physics_process(delta: float) -> void:
 			is_gliding = false
 			is_ground_pounding = false
 			squash()
+		
+		if jump_buffer_timer > 0:
+			jump()
+			
 		was_on_floor = true
 	else: # is in air
 		land_velocity = velocity.y # keep updating land velocity till land
@@ -128,6 +132,7 @@ func apply_gravity(delta) -> void:
 	print(velocity.y)
 	
 func handle_input():
+	if !can_take_input: return
 	#region JUMP
 	if Input.is_action_just_pressed("jump"):
 		if coyote_timer > 0:
@@ -208,6 +213,7 @@ func ground_pound_cancel() -> void:
 
 func jump():
 	jump_count = jump_count + 1
+	
 	if super_jump_timer > 0:
 		velocity.y = jump_velocity * 1.2
 	else:
