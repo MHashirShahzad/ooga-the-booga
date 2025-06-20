@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crghpbxb43xhe"]
+[gd_scene load_steps=19 format=3 uid="uid://crghpbxb43xhe"]
 
 [ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_omn1t"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_lf3p4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://wlycmv3qfr50" path="res://levels/level2.tscn" id="6_omn1t"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="8_a5s8o"]
 [ext_resource type="PackedScene" uid="uid://dtdig231j65i6" path="res://props/spring.tscn" id="9_omn1t"]
+[ext_resource type="PackedScene" uid="uid://c5v5gioj5ik0h" path="res://props/guiding_arrow.tscn" id="9_yydhl"]
 [ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="10_lf3p4"]
 
 [sub_resource type="Resource" id="Resource_p8yh6"]
@@ -17,22 +18,22 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lf3p4"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yydhl"]
 polygon = PackedVector2Array(-523, -1065, -1046, -1153, -1257, -2041, -834, -2578, 273, -2676, 2308, -2643, 2902, -2325, 2927, -1593, 2625, -1039, 2273, -912, 2293, -954, 2171, -1002, 2042, -955, 1966, -852, 1673, -860, 1575, -1316, 1905.69, -1408.66, 1980, -1282, 2037, -1206, 2027, -1259, 2099, -1167, 2008, -1423, 2146, -1476, 2298, -1549, 2332, -1678, 2258, -1558, 2080, -1501, 1953, -1476, 1925.84, -1536.07, 1828, -2130, 1233, -2049, 1331, -1715, 1518, -1682, 1567, -1479, 1209, -1324, 1209, -1007)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yydhl"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bekh1"]
 polygon = PackedVector2Array(240, -424, 280, -688, 536, -736, 744, -640, 801, -425)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bekh1"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8bcou"]
 polygon = PackedVector2Array(240, -424, 238, -537, 562, -582, 792, -535, 801, -425, 460, -474)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8bcou"]
-polygon = PackedVector2Array(401, -514, 181, -469, 156, -427, 197, -450, 335, -480, 624, -502, 730, -551)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f7u7y"]
-polygon = PackedVector2Array(238, -537, 316, -469, 620, -353, 434, -351, 271, -393, 210, -353)
+polygon = PackedVector2Array(401, -514, 181, -469, 114, -441, 197, -450, 335, -480, 624, -502, 730, -551)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jq2cn"]
+polygon = PackedVector2Array(238, -537, 316, -469, 620, -353, 434, -351, 271, -393, 210, -353)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a5s8o"]
 polygon = PackedVector2Array(453, 424, 219, -170, 280, -607, 74, -800, 540, -787, 772, -837, 791, -464, 680.318, -45.6727, 631, 380)
 
 [node name="Level1" type="Node2D" groups=["level"]]
@@ -40,14 +41,14 @@ polygon = PackedVector2Array(453, 424, 219, -170, 280, -607, 74, -800, 540, -787
 [node name="LevelEssentials" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_omn1t")]
-position = Vector2(502, 202)
+position = Vector2(48, 208)
 
 [node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
 color = Color(0.0509804, 0.054902, 0.0392157, 1)
 
 [node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
 physics_interpolation_mode = 1
-position = Vector2(502, 202)
+position = Vector2(48, 208)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 
@@ -58,7 +59,7 @@ script = ExtResource("2_lf3p4")
 
 [node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(502, 202)
+position = Vector2(48, 208)
 script = ExtResource("3_yydhl")
 follow_mode = 5
 follow_target = NodePath("../CharacterBody2D")
@@ -89,7 +90,7 @@ shadow_enabled = true
 texture_scale = 4.0
 
 [node name="Fuel" parent="World" instance=ExtResource("5_8bcou")]
-position = Vector2(122, 676)
+position = Vector2(498, 731)
 fuel_amount = 2.5
 is_self_destruct = false
 
@@ -116,7 +117,7 @@ invert_border = 1000.0
 polygon = PackedVector2Array(-523, -1065, -1046, -1153, -1257, -2041, -834, -2578, 273, -2676, 2308, -2643, 2902, -2325, 2927, -1593, 2625, -1039, 2273, -912, 2293, -954, 2171, -1002, 2042, -955, 1966, -852, 1673, -860, 1575, -1316, 1905.69, -1408.66, 1980, -1282, 2037, -1206, 2027, -1259, 2099, -1167, 2008, -1423, 2146, -1476, 2298, -1549, 2332, -1678, 2258, -1558, 2080, -1501, 1953, -1476, 1925.84, -1536.07, 1828, -2130, 1233, -2049, 1331, -1715, 1518, -1682, 1567, -1479, 1209, -1324, 1209, -1007)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_lf3p4")
+occluder = SubResource("OccluderPolygon2D_yydhl")
 
 [node name="LevelBuilder2" parent="World" instance=ExtResource("6_f7u7y")]
 position = Vector2(378, 1465)
@@ -128,7 +129,7 @@ polygon = PackedVector2Array(240, -424, 280, -688, 536, -736, 744, -640, 801, -4
 polygon = PackedVector2Array(240, -424, 280, -688, 536, -736, 744, -640, 801, -425)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder2" index="2"]
-occluder = SubResource("OccluderPolygon2D_yydhl")
+occluder = SubResource("OccluderPolygon2D_bekh1")
 
 [node name="LevelBuilder4" parent="World" instance=ExtResource("6_f7u7y")]
 position = Vector2(1177, 1143)
@@ -140,22 +141,22 @@ polygon = PackedVector2Array(240, -424, 238, -537, 562, -582, 792, -535, 801, -4
 polygon = PackedVector2Array(240, -424, 238, -537, 562, -582, 792, -535, 801, -425, 460, -474)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder4" index="2"]
-occluder = SubResource("OccluderPolygon2D_bekh1")
+occluder = SubResource("OccluderPolygon2D_8bcou")
 
 [node name="LevelBuilder6" parent="World" instance=ExtResource("6_f7u7y")]
 position = Vector2(1473, 347)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder6" index="0"]
 position = Vector2(50, -95)
-polygon = PackedVector2Array(401, -514, 181, -469, 156, -427, 197, -450, 335, -480, 624, -502, 730, -551)
+polygon = PackedVector2Array(401, -514, 181, -469, 114, -441, 197, -450, 335, -480, 624, -502, 730, -551)
 
 [node name="Polygon2D" parent="World/LevelBuilder6" index="1"]
 position = Vector2(50, -95)
-polygon = PackedVector2Array(401, -514, 181, -469, 156, -427, 197, -450, 335, -480, 624, -502, 730, -551)
+polygon = PackedVector2Array(401, -514, 181, -469, 114, -441, 197, -450, 335, -480, 624, -502, 730, -551)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder6" index="2"]
 position = Vector2(50, -95)
-occluder = SubResource("OccluderPolygon2D_8bcou")
+occluder = SubResource("OccluderPolygon2D_f7u7y")
 
 [node name="LevelBuilder5" parent="World" instance=ExtResource("6_f7u7y")]
 position = Vector2(786, 583)
@@ -167,7 +168,7 @@ polygon = PackedVector2Array(238, -537, 316, -469, 620, -353, 434, -351, 271, -3
 polygon = PackedVector2Array(238, -537, 316, -469, 620, -353, 434, -351, 271, -393, 210, -353)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder5" index="2"]
-occluder = SubResource("OccluderPolygon2D_f7u7y")
+occluder = SubResource("OccluderPolygon2D_jq2cn")
 
 [node name="LevelBuilder3" parent="World" instance=ExtResource("6_f7u7y")]
 position = Vector2(378, 1465)
@@ -182,7 +183,7 @@ polygon = PackedVector2Array(453, 424, 219, -170, 280, -607, 74, -800, 540, -787
 
 [node name="LightOccluder2D" parent="World/LevelBuilder3" index="2"]
 position = Vector2(25, -1418)
-occluder = SubResource("OccluderPolygon2D_jq2cn")
+occluder = SubResource("OccluderPolygon2D_a5s8o")
 
 [node name="Spring" parent="World" instance=ExtResource("9_omn1t")]
 position = Vector2(2280, 590)
@@ -216,6 +217,14 @@ energy = 0.39
 shadow_enabled = true
 texture = ExtResource("10_lf3p4")
 texture_scale = 3.0
+
+[node name="GuidingArrow" parent="World" instance=ExtResource("9_yydhl")]
+position = Vector2(2113, 846)
+rotation = -1.22047
+
+[node name="GuidingArrow2" parent="World" instance=ExtResource("9_yydhl")]
+position = Vector2(1809, 77)
+rotation = -3.09924
 
 [node name="Label" type="Label" parent="."]
 z_index = -2

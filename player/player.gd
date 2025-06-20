@@ -5,8 +5,14 @@ const LAND_VFX = preload("res://player/land_vfx.tscn")
 
 
 @onready var sprite_2d: Polygon2D = $SpriteHouser/Sprite2D
+@onready var diamond_2d: Polygon2D = $SpriteHouser/Sprite2D/Diamond2D
+
 @onready var point_light : PointLight2D = $PointLight2D
 @onready var ani_player: AnimationPlayer = $AniPlayer
+
+@onready var glider_trail_vfx: Trail2D = $GliderTrailVFX
+@onready var glider_trail_vfx2: Trail2D = $GliderTrailVFX2
+
 
 #region export_variables
 @export var ground_pound_velocity = 1000
@@ -36,13 +42,16 @@ var coyote_timer:float = 0
 var super_jump_timer:float = 0
 var jump_count : int = 0
 
-var is_on_ground : bool 
+## holds previous frame info
+var was_on_floor : bool 
 var can_super_jump : bool
 var land_velocity : float 
 var wish_dir : float = 0
 
 var is_dead : bool = false
 var is_being_pulled : bool = false
+var is_gliding : bool = false
+var is_ground_pounding : bool = false
 #endregion
 
 func _ready():
@@ -63,32 +72,34 @@ func _physics_process(delta: float) -> void:
 	light_fade(delta)
 	
 	# Coyote stuff
-	if is_on_floor():
+	if is_on_floor(): # current frame on_floor
 		jump_count = 0
 		if jump_buffer_timer > 0:
 			jump()
 		 	
-		if not is_on_ground:
-			pass
-			#dust_particles.emitting = true
+		if not was_on_floor: # previous frame on_floor
+			
+			# landed with enough velocity
 			if land_velocity >= ground_pound_velocity:
 				super_jump_timer = super_jump_time
-				# dust particles :P, doesnt work
-				#TODO fix these if u can
 				VFXManager.add_vfx(LAND_VFX, $VFXSpawnLocation)
+			
+			is_gliding = false
+			is_ground_pounding = false
 			squash()
-		is_on_ground = true
-	else:
-		land_velocity = velocity.y
-		if is_on_ground:
+		was_on_floor = true
+	else: # is in air
+		land_velocity = velocity.y # keep updating land velocity till land
+		if was_on_floor:
 			if !(jump_count > 0):
 				coyote_timer = coyote_time
 				jump_count = 1
-		is_on_ground = false
+		was_on_floor = false
 		apply_gravity(delta)
 
 	
 	handle_input()
+	# push_off_ledges()
 	lean_in_wish_dir(delta)
 	move_and_slide()
 
@@ -97,11 +108,15 @@ func apply_gravity(delta) -> void:
 		velocity.y = terminal_velocity
 		return
 	
-	if velocity.y > 0:
-		velocity += get_gravity() * delta * 1.25
-	else:
+	
+	if velocity.y > 0:  # falling
+		if is_gliding:
+			velocity += get_gravity() * delta * .6
+		else:
+			velocity += get_gravity() * delta * 1.25
+	else: # not falling
 		velocity += get_gravity() * delta
-		
+	print(velocity.y)
 	
 func handle_input():
 	#region JUMP
@@ -137,16 +152,34 @@ func handle_input():
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 	#endregion 
 	
+	#region GroundPound
 	if Input.is_action_just_pressed("ground_pound"):
 		if is_on_floor():
 			return
 		if is_being_pulled: return
 		
+		is_ground_pounding = true
 		if self.velocity.y >= ground_pound_velocity:
 			return
 		self.velocity.y = ground_pound_velocity
 		stretch()
-
+	#endregion
+	
+	if Input.is_action_pressed("parachute"):
+		if is_on_floor() or is_ground_pounding:
+			is_gliding = false
+			glider_trail_vfx.can_spawn_new_points = false
+			glider_trail_vfx2.can_spawn_new_points = false
+		else:
+			is_gliding = true
+			glider_trail_vfx.can_spawn_new_points = true
+			glider_trail_vfx2.can_spawn_new_points = true
+		
+	if Input.is_action_just_released("parachute"):
+		is_gliding = false
+		glider_trail_vfx.can_spawn_new_points = false
+		glider_trail_vfx2.can_spawn_new_points = false
+	
 func jump():
 	jump_count = jump_count + 1
 	if super_jump_timer > 0:

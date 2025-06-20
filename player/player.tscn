@@ -244,6 +244,20 @@ shape = SubResource("CircleShape2D_onrkg")
 [node name="SpriteTrailVfx" parent="." instance=ExtResource("4_yw30f")]
 z_index = -1
 
+[node name="GliderTrailVFX" parent="." instance=ExtResource("4_yw30f")]
+z_index = -1
+position = Vector2(56, 0)
+width = 20.0
+default_color = Color(0.858824, 0.901961, 0.913725, 0.423529)
+can_spawn_new_points = false
+
+[node name="GliderTrailVFX2" parent="." instance=ExtResource("4_yw30f")]
+z_index = -1
+position = Vector2(-57, 0)
+width = 20.0
+default_color = Color(0.858824, 0.901961, 0.913725, 0.423529)
+can_spawn_new_points = false
+
 [node name="VFXSpawnLocation" type="Marker2D" parent="."]
 position = Vector2(0, 63)
 rotation = -1.5708

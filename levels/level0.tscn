@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfm6f2bo47cn8"]
+[gd_scene load_steps=17 format=3 uid="uid://bfm6f2bo47cn8"]
 
 [ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_rqr14"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_2etfj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="7_3vj3r"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="8_p8yh6"]
 [ext_resource type="PackedScene" uid="uid://crghpbxb43xhe" path="res://levels/level1.tscn" id="9_w2q2b"]
+[ext_resource type="PackedScene" uid="uid://c5v5gioj5ik0h" path="res://props/guiding_arrow.tscn" id="10_f811g"]
 
 [sub_resource type="Resource" id="Resource_p8yh6"]
 script = ExtResource("4_3vj3r")
@@ -16,19 +17,19 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w2q2b"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f811g"]
 polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f811g"]
-polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3act"]
-polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
+polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cxy21"]
-polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v3eec"]
+polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1jtsu"]
 polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
 
 [node name="Level0" type="Node2D" groups=["level"]]
@@ -36,14 +37,17 @@ polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414,
 [node name="LevelEssentials" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_rqr14")]
-position = Vector2(1785, 1454)
+position = Vector2(1019, 1634)
+
+[node name="PointLight2D" parent="LevelEssentials/CharacterBody2D" index="0"]
+texture_scale = 1.5
 
 [node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
 color = Color(0.0509804, 0.054902, 0.0392157, 1)
 
 [node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
 physics_interpolation_mode = 1
-position = Vector2(1785, 1454)
+position = Vector2(1019, 1634)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 
@@ -54,7 +58,7 @@ script = ExtResource("2_2etfj")
 
 [node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(1785, 1454)
+position = Vector2(1019, 1634)
 script = ExtResource("3_4kw1h")
 follow_mode = 5
 follow_target = NodePath("../CharacterBody2D")
@@ -77,7 +81,7 @@ offset_bottom = 2906.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="Fuel" parent="World" instance=ExtResource("5_4kw1h")]
-position = Vector2(1140, 2029)
+position = Vector2(2735, 1647)
 fuel_amount = 2.0
 is_self_destruct = false
 
@@ -96,19 +100,19 @@ polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311
 polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_w2q2b")
+occluder = SubResource("OccluderPolygon2D_f811g")
 
 [node name="LevelBuilder2" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder2" index="0"]
-polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
+polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
 
 [node name="Polygon2D" parent="World/LevelBuilder2" index="1"]
-polygon = PackedVector2Array(487, -436, 461, -687, 461, -687, 758, -736, 801, -425)
+polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder2" index="2"]
-occluder = SubResource("OccluderPolygon2D_f811g")
+occluder = SubResource("OccluderPolygon2D_f3act")
 
 [node name="LevelBuilder3" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
@@ -120,7 +124,7 @@ polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 9
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder3" index="2"]
-occluder = SubResource("OccluderPolygon2D_f3act")
+occluder = SubResource("OccluderPolygon2D_cxy21")
 
 [node name="LevelBuilder5" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
@@ -135,7 +139,7 @@ polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1
 
 [node name="LightOccluder2D" parent="World/LevelBuilder5" index="2"]
 position = Vector2(-1999, -899)
-occluder = SubResource("OccluderPolygon2D_cxy21")
+occluder = SubResource("OccluderPolygon2D_v3eec")
 
 [node name="LevelBuilder4" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2279, 2307)
@@ -150,7 +154,7 @@ polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414,
 
 [node name="LightOccluder2D" parent="World/LevelBuilder4" index="2"]
 position = Vector2(467, -361)
-occluder = SubResource("OccluderPolygon2D_v3eec")
+occluder = SubResource("OccluderPolygon2D_1jtsu")
 
 [node name="PointLight2D" type="PointLight2D" parent="World"]
 position = Vector2(1756, 1943)
@@ -169,7 +173,7 @@ texture = ExtResource("7_3vj3r")
 texture_scale = 10.0
 
 [node name="PointLight2D3" type="PointLight2D" parent="World"]
-position = Vector2(1527, -713)
+position = Vector2(1809, -804)
 color = Color(0.858824, 0.901961, 0.913725, 1)
 energy = 0.1
 shadow_enabled = true
@@ -182,14 +186,25 @@ next_level = ExtResource("9_w2q2b")
 
 [node name="Label" type="Label" parent="World"]
 z_index = -2
-offset_left = 1757.0
-offset_top = 1842.0
-offset_right = 2262.0
-offset_bottom = 1902.0
+offset_left = 1232.0
+offset_top = 1879.0
+offset_right = 1737.0
+offset_bottom = 2002.0
 rotation = -0.0689031
 theme_override_font_sizes/font_size = 40
 text = "Use \"a\" and \"d\" to move
 \"space\" to jump"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="World"]
+z_index = -2
+offset_left = 2431.0
+offset_top = 1478.0
+offset_right = 2936.0
+offset_bottom = 1601.0
+rotation = -0.1734
+theme_override_font_sizes/font_size = 40
+text = "Refill your light"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="World"]
@@ -201,10 +216,18 @@ offset_bottom = 1653.0
 rotation = -0.184508
 theme_override_font_sizes/font_size = 36
 text = "If you run out of light
-you die.
-refill light at lightorbs"
+you die."
 horizontal_alignment = 1
 
+[node name="GuidingArrow" parent="." instance=ExtResource("10_f811g")]
+position = Vector2(4533, 1047)
+rotation = -2.57793
+
+[node name="GuidingArrow2" parent="." instance=ExtResource("10_f811g")]
+position = Vector2(3186, 651)
+rotation = -0.397952
+
+[editable path="LevelEssentials/CharacterBody2D"]
 [editable path="World/LevelBuilder"]
 [editable path="World/LevelBuilder2"]
 [editable path="World/LevelBuilder3"]
