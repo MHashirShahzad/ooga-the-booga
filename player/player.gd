@@ -16,7 +16,7 @@ const LAND_VFX = preload("res://player/land_vfx.tscn")
 
 #region export_variables
 @export var ground_pound_velocity = 1000
-
+@export var can_light_fade : bool = true
 @export_group("Effects")
 @export var light_fade_multiplier : float = .1
 @export var squashed_size:Vector2 = Vector2(1.1, 0.8) 
@@ -53,6 +53,7 @@ var is_being_pulled : bool = false
 var is_gliding : bool = false
 var is_ground_pounding : bool = false
 var can_take_input : bool = true
+
 #endregion
 
 func _ready():
@@ -212,6 +213,7 @@ func ground_pound_cancel() -> void:
 	tween.kill()
 
 func jump():
+	SFXManager.play_FX(SFXManager.jump_sfx_array.pick_random(),.4, 1,1)
 	jump_count = jump_count + 1
 	
 	if super_jump_timer > 0:
@@ -227,6 +229,7 @@ func lean_in_wish_dir(delta : float):
 	pass
 	
 func light_fade(delta: float) -> void:
+	if !can_light_fade: return
 	if is_dead: return
 	if point_light.texture_scale <= 0:
 		die()

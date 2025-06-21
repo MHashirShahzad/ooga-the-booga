@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_mdw0g"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_naavy"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="5_gh4cy"]
-[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="6_qi51e"]
+[ext_resource type="PackedScene" uid="uid://bvfn8uap7q3xi" path="res://levels/level5.tscn" id="6_lw0yu"]
 [ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="7_lw0yu"]
 [ext_resource type="PackedScene" uid="uid://byurm6yhi1drh" path="res://props/light_puller.tscn" id="8_mdw0g"]
 [ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="8_mj76i"]
@@ -194,7 +194,7 @@ color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="LevelEnd" parent="World" instance=ExtResource("5_gh4cy")]
 position = Vector2(2177, 3670)
-next_level = ExtResource("6_qi51e")
+next_level = ExtResource("6_lw0yu")
 
 [node name="PointLight2D" parent="World/LevelEnd" index="3"]
 energy = 1.0
