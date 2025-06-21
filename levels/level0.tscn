@@ -207,6 +207,17 @@ theme_override_font_sizes/font_size = 40
 text = "Refill your light"
 horizontal_alignment = 1
 
+[node name="Label4" type="Label" parent="World"]
+z_index = -2
+offset_left = 4004.0
+offset_top = 959.0
+offset_right = 4629.0
+offset_bottom = 1082.0
+rotation = 0.0150497
+theme_override_font_sizes/font_size = 40
+text = "hold \"space\" for bigger jumps"
+horizontal_alignment = 1
+
 [node name="Label2" type="Label" parent="World"]
 z_index = -2
 offset_left = 3413.0

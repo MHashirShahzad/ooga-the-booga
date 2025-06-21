@@ -298,6 +298,17 @@ theme_override_font_sizes/font_size = 120
 text = "!"
 horizontal_alignment = 1
 
+[node name="Label4" type="Label" parent="World"]
+z_index = -2
+offset_left = 5639.0
+offset_top = -765.0
+offset_right = 6144.0
+offset_bottom = -587.0
+rotation = -0.0149893
+theme_override_font_sizes/font_size = 120
+text = "!"
+horizontal_alignment = 1
+
 [node name="KillZone" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(72, 1020)
 rotation = 0.0431308

@@ -23,6 +23,64 @@ ease = 2
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lw0yu"]
 polygon = PackedVector2Array(-1254, -1352, -1165.44, -1399.27, -580, -1440, -524, -1512, -301, -1524, -100, -1498, 78, -1544, 213, -1497, 295, -1349, 228, -1180, 65, -1214, 20, -1210, 46.5823, -1031.36, 310, -886, 759, -862, 1025, -725, 1353, -582, 1441, -222, 1537, 28, 1284.94, 73.723, 1183, 17, 1048, 69, 1014, 124, 832.757, 156.609, 830, 458, 870, 723, 791, 1161, 653.586, 1462.33, 726, 1453, 765, 1619, 815, 1619, 809, 1445, 1159, 1414, 1448, 1450, 1504, 1676, 1334, 1920, 1043, 2011, 996, 1891, 921, 1894, 903, 2029, 571, 1985, 336, 1861, 220, 1664, 337, 1448, 484, 1091, 587, 720, 533, 466, 445, 109, 612, -148, 1149, -326, 1071, -416, 795, -383, 570, -531, 163, -498, -146, -592, -269, -899, -201, -1209, -994, -1229, -1041, -1227, -1042, -286, -1287, -320, -1913, -297, -2322, -368, -2391, -541, -2333.77, -697.902, -1923, -766, -1514, -716, -1368, -743, -1319.1, -882.393, -1284.41, -1242.46)
 
+[sub_resource type="Animation" id="Animation_lw0yu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillZone:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(386, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KillZone2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(794, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KillZone3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1116, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KillZone3:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(797, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("KillZone4:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(289, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_qi51e"]
 resource_name = "spike"
 length = 1.5
@@ -81,64 +139,6 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(159, -0.25, 0, 0.25, 0, 396, -0.25, 0, 0.25, 0, 159, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.415191, 1)
-}
-
-[sub_resource type="Animation" id="Animation_lw0yu"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("KillZone:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(386, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("KillZone2:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(794, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("KillZone3:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1116, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("KillZone3:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(797, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("KillZone4:position:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(289, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lw0yu"]

@@ -130,7 +130,7 @@ offset_top = 2728.0
 offset_right = 1077.0
 offset_bottom = 2851.0
 theme_override_font_sizes/font_size = 40
-text = "press \"w\" to glide"
+text = "hold \"w\" to glide"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="World"]
@@ -149,6 +149,16 @@ offset_left = 2189.0
 offset_top = 3730.0
 offset_right = 2727.0
 offset_bottom = 3908.0
+theme_override_font_sizes/font_size = 120
+text = "!"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="World"]
+z_index = -2
+offset_left = 2525.0
+offset_top = 5958.0
+offset_right = 3063.0
+offset_bottom = 6136.0
 theme_override_font_sizes/font_size = 120
 text = "!"
 horizontal_alignment = 1
