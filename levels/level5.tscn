@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvfn8uap7q3xi"]
+
+[ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_d4v0i"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_upukb"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_y18d6"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_vobc4"]
+[ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="5_52hkl"]
+[ext_resource type="PackedScene" uid="uid://ckihqgbfmfhnp" path="res://levels/main.tscn" id="6_gw0q8"]
+[ext_resource type="PackedScene" uid="uid://b3vddyjiubpxk" path="res://props/level_builder.tscn" id="7_33jjl"]
+[ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="9_nv45w"]
+[ext_resource type="FontFile" uid="uid://5isbtj4fnabu" path="res://assets/fonts/Finger_Paint/FingerPaint-Regular.ttf" id="9_vp6pq"]
+[ext_resource type="PackedScene" uid="uid://tck5qbqr3nug" path="res://props/spike_ball.tscn" id="12_62um3"]
+
+[sub_resource type="Resource" id="Resource_p8yh6"]
+script = ExtResource("4_vobc4")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_66nwl"]
+polygon = PackedVector2Array(-2672, -4, -2204, 24, -2113, -299, -2025, -327, -2044, 131, -1598, 200, -986, 241, -641, 87, -1044, -236, -1513, -374, -1757, -253, -2025, -908, -2562, -751, -2759, -409)
+
+[node name="Level5" type="Node2D" groups=["level"]]
+
+[node name="LevelEssentials" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="LevelEssentials" instance=ExtResource("1_d4v0i")]
+position = Vector2(-1563, 1806)
+
+[node name="Darkener" type="CanvasModulate" parent="LevelEssentials"]
+visible = false
+color = Color(0.0509804, 0.054902, 0.0392157, 1)
+
+[node name="Camera2D" type="Camera2D" parent="LevelEssentials"]
+physics_interpolation_mode = 1
+position = Vector2(-1563, 1806)
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="LevelEssentials/Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_upukb")
+
+[node name="PhantomCamera2D" type="Node2D" parent="LevelEssentials" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(-1563, 1806)
+script = ExtResource("3_y18d6")
+follow_mode = 5
+follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(0.8, 0.8)
+tween_resource = SubResource("Resource_p8yh6")
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+dead_zone_width = 0.1
+dead_zone_height = 0.1
+_preview_noise = false
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+z_index = -4
+offset_left = -2343.0
+offset_top = -954.0
+offset_right = 3698.0
+offset_bottom = 4665.0
+color = Color(0.360784, 0.356863, 0.356863, 1)
+
+[node name="LevelEnd" parent="World" instance=ExtResource("5_52hkl")]
+position = Vector2(2177, 3670)
+next_level = ExtResource("6_gw0q8")
+
+[node name="PointLight2D" parent="World/LevelEnd" index="3"]
+energy = 1.0
+shadow_enabled = true
+texture_scale = 6.0
+
+[node name="LevelBuilder" parent="World" instance=ExtResource("7_33jjl")]
+position = Vector2(1011, 1937)
+
+[node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
+build_mode = 1
+polygon = PackedVector2Array(-2672, -4, -2204, 24, -2113, -299, -2025, -327, -2044, 131, -1598, 200, -986, 241, -641, 87, -1044, -236, -1513, -374, -1757, -253, -2025, -908, -2562, -751, -2759, -409)
+
+[node name="Polygon2D" parent="World/LevelBuilder" index="1"]
+invert_enabled = true
+invert_border = 1000.0
+polygon = PackedVector2Array(-2672, -4, -2204, 24, -2113, -299, -2025, -327, -2044, 131, -1598, 200, -986, 241, -641, 87, -1044, -236, -1513, -374, -1757, -253, -2025, -908, -2562, -751, -2759, -409)
+
+[node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
+occluder = SubResource("OccluderPolygon2D_66nwl")
+
+[node name="Fuel" parent="World" instance=ExtResource("9_nv45w")]
+position = Vector2(-1311, 1861)
+fuel_amount = 2.0
+
+[node name="Label2" type="Label" parent="World"]
+z_index = -2
+offset_left = -1678.0
+offset_top = 1704.0
+offset_right = -1156.0
+offset_bottom = 1827.0
+rotation = 0.0610886
+theme_override_fonts/font = ExtResource("9_vp6pq")
+theme_override_font_sizes/font_size = 40
+text = "Groundpound and jump"
+horizontal_alignment = 1
+
+[node name="SpikeBall" parent="World" instance=ExtResource("12_62um3")]
+position = Vector2(-464, 2072)
+scale = Vector2(8, 8)
+rotation_speed_multiplier = 160
+
+[editable path="World/LevelEnd"]
+[editable path="World/LevelBuilder"]
