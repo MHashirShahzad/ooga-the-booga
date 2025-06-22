@@ -17,19 +17,19 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f811g"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3act"]
 polygon = PackedVector2Array(-1340, -773, -1266, -2603, -2529, -950, -2197, 1135, 3821, 1332, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3act"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cxy21"]
 polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cxy21"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v3eec"]
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v3eec"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1jtsu"]
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1068, -1592)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1jtsu"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qlvc7"]
 polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414, 960, -1259)
 
 [node name="Level0" type="Node2D" groups=["level"]]
@@ -100,7 +100,7 @@ polygon = PackedVector2Array(-1340, -773, -1266, -2603, -2529, -950, -2197, 1135
 polygon = PackedVector2Array(-1340, -773, -1266, -2603, -2529, -950, -2197, 1135, 3821, 1332, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_f811g")
+occluder = SubResource("OccluderPolygon2D_f3act")
 
 [node name="LevelBuilder2" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
@@ -112,7 +112,7 @@ polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
 polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder2" index="2"]
-occluder = SubResource("OccluderPolygon2D_f3act")
+occluder = SubResource("OccluderPolygon2D_cxy21")
 
 [node name="LevelBuilder3" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
@@ -124,7 +124,7 @@ polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 9
 polygon = PackedVector2Array(999, -1744, 999, -1744, 1644, -1571, 1600, -1509, 961, -1647)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder3" index="2"]
-occluder = SubResource("OccluderPolygon2D_cxy21")
+occluder = SubResource("OccluderPolygon2D_v3eec")
 
 [node name="LevelBuilder5" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2124, 2479)
@@ -139,7 +139,7 @@ polygon = PackedVector2Array(999, -1744, 999, -1744, 1796, -2461, 1686, -1923, 1
 
 [node name="LightOccluder2D" parent="World/LevelBuilder5" index="2"]
 position = Vector2(-1999, -899)
-occluder = SubResource("OccluderPolygon2D_v3eec")
+occluder = SubResource("OccluderPolygon2D_1jtsu")
 
 [node name="LevelBuilder4" parent="World" instance=ExtResource("5_2etfj")]
 position = Vector2(2279, 2307)
@@ -154,7 +154,7 @@ polygon = PackedVector2Array(1123, -1393, 1370, -1537, 1644, -1571, 1619, -1414,
 
 [node name="LightOccluder2D" parent="World/LevelBuilder4" index="2"]
 position = Vector2(467, -361)
-occluder = SubResource("OccluderPolygon2D_1jtsu")
+occluder = SubResource("OccluderPolygon2D_qlvc7")
 
 [node name="PointLight2D" type="PointLight2D" parent="World"]
 position = Vector2(1756, 1943)

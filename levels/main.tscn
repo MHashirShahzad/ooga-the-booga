@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckihqgbfmfhnp"]
+[gd_scene load_steps=10 format=3 uid="uid://ckihqgbfmfhnp"]
 
 [ext_resource type="Script" uid="uid://bec6170d2x5pi" path="res://levels/main.gd" id="1_6et1j"]
 [ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_m1504"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_6et1j"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="6_6yxbg"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_etqu2"]
-[ext_resource type="PackedScene" uid="uid://bfm6f2bo47cn8" path="res://levels/level0.tscn" id="8_6et1j"]
 
 [sub_resource type="Resource" id="Resource_s07ge"]
 script = ExtResource("7_etqu2")
@@ -15,7 +14,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6et1j"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qy63d"]
 polygon = PackedVector2Array(-3000, -334, -2712, -357, -2385, -333, -2129, -284, -1957, -52, -1960, 205, -2145, 307, -2456, 382, -2869, 385, -3033, 317, -3257, 201, -3377, 27, -3208, -198)
 
 [node name="main" type="Node2D" groups=["level"]]
@@ -81,7 +80,7 @@ invert_border = 1000.0
 polygon = PackedVector2Array(-3000, -334, -2712, -357, -2385, -333, -2129, -284, -1957, -52, -1960, 205, -2145, 307, -2456, 382, -2869, 385, -3033, 317, -3257, 201, -3377, 27, -3208, -198)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_6et1j")
+occluder = SubResource("OccluderPolygon2D_qy63d")
 
 [node name="Label6" type="Label" parent="World"]
 z_index = -2
@@ -105,7 +104,8 @@ horizontal_alignment = 1
 
 [node name="LevelEnd" parent="." instance=ExtResource("6_6yxbg")]
 position = Vector2(-1222, 2146)
-next_level = ExtResource("8_6et1j")
+
+[connection signal="body_entered" from="LevelEnd" to="." method="_on_level_end_body_entered"]
 
 [editable path="LevelEssentials/CharacterBody2D"]
 [editable path="World/LevelBuilder"]
