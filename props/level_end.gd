@@ -21,6 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 			return
 		player = body
 		player.can_take_input = false
+		SFXManager.play_FX(SFXManager.level_end_sfx_array.pick_random(), 1, 1, 1)
 		TransitionManager.transition_scene_packed(next_level)
 		var new_diamond : Polygon2D = body.diamond_2d.duplicate()
 		new_diamond.scale = Vector2(0,0)

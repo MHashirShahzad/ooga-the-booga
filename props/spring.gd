@@ -12,6 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			body.velocity = dir * launch_velocity
 		body.is_ground_pounding = false # if ground pounding cancel it cuz :P
+		SFXManager.play_FX(SFXManager.spike_sfx_array.pick_random(), 3, 1, 1)
 		body.jump_count += 1
 		body.stretch()
 		ani_player.play("bounce")

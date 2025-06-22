@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dksagyxkghm6x" path="res://props/fuel.tscn" id="5_4kw1h"]
 [ext_resource type="Texture2D" uid="uid://4bbctj0nv4tx" path="res://assets/light.png" id="7_3vj3r"]
 [ext_resource type="PackedScene" uid="uid://br8vpoqj66uy4" path="res://props/level_end.tscn" id="8_p8yh6"]
-[ext_resource type="PackedScene" uid="uid://crghpbxb43xhe" path="res://levels/level1.tscn" id="9_w2q2b"]
+[ext_resource type="PackedScene" uid="uid://crghpbxb43xhe" path="res://levels/level1.tscn" id="9_f811g"]
 [ext_resource type="PackedScene" uid="uid://c5v5gioj5ik0h" path="res://props/guiding_arrow.tscn" id="10_f811g"]
 
 [sub_resource type="Resource" id="Resource_p8yh6"]
@@ -18,7 +18,7 @@ transition = 0
 ease = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f811g"]
-polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
+polygon = PackedVector2Array(-1340, -773, -1266, -2603, -2529, -950, -2197, 1135, 3821, 1332, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f3act"]
 polygon = PackedVector2Array(487, -436, 464, -680, 758, -736, 801, -425)
@@ -74,10 +74,10 @@ _preview_noise = false
 
 [node name="ColorRect" type="ColorRect" parent="World"]
 z_index = -4
-offset_left = -549.0
+offset_left = -1530.0
 offset_top = -1468.0
-offset_right = 5947.0
-offset_bottom = 2906.0
+offset_right = 7274.0
+offset_bottom = 4160.0
 color = Color(0.360784, 0.356863, 0.356863, 1)
 
 [node name="Fuel" parent="World" instance=ExtResource("5_4kw1h")]
@@ -94,10 +94,10 @@ is_self_destruct = false
 position = Vector2(2124, 2479)
 
 [node name="CollisionPolygon2D" parent="World/LevelBuilder" index="0"]
-polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
+polygon = PackedVector2Array(-1340, -773, -1266, -2603, -2529, -950, -2197, 1135, 3821, 1332, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
 [node name="Polygon2D" parent="World/LevelBuilder" index="1"]
-polygon = PackedVector2Array(-1340, -773, -1266, -2603, -1885, -1261, -1632, 311, 3276, 18, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
+polygon = PackedVector2Array(-1340, -773, -1266, -2603, -2529, -950, -2197, 1135, 3821, 1332, 3479, -3742, 2988, -3446, 3136, -1980, 2557, -1971, 2528, -1321, 2015, -1302, 2010.35, -1104.23, 1838, -1046, 1962, -1047, 2006.32, -1001.98, 1996, -829, 1277, -701, 755, -464, -1058, -346, -1058, -346)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
 occluder = SubResource("OccluderPolygon2D_f811g")
@@ -182,7 +182,7 @@ texture_scale = 21.25
 
 [node name="LevelEnd" parent="World" instance=ExtResource("8_p8yh6")]
 position = Vector2(5137, 398)
-next_level = ExtResource("9_w2q2b")
+next_level = ExtResource("9_f811g")
 
 [node name="Label" type="Label" parent="World"]
 z_index = -2

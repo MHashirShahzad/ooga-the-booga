@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player2D:
 		player = body
+		SFXManager.play_FX(SFXManager.light_refill_sfx_array.pick_random(), 3, 1, 1)
 		if is_self_destruct:
 			body.point_light.texture_scale += fuel_amount
 			body.ani_player.play("refill_fuel")

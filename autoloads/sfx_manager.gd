@@ -1,30 +1,75 @@
 extends Node2D
 
-#@export var music_array : Array[AudioStream] = [
-	#preload("res://assets/audio/music/hashir/a-video-game-248444.mp3"),
-	#preload("res://assets/audio/music/hashir/fast-paced-boss-battle-230222.mp3"),
-	#preload("res://assets/audio/music/hashir/game-music-teste-1-204326.mp3"),
-	#preload("res://assets/audio/music/hashir/intense-electro-trailer-music-243987.mp3"),
-	#preload("res://assets/audio/music/hashir/space-station-247790.mp3"),
-	#preload("res://assets/audio/music/hashir/stranger-things-124008.mp3"),
-	#preload("res://assets/audio/music/hashir/electric-horizons-239006.mp3"),
-	#preload("res://assets/audio/music/hashir/galactic-overture-241181.mp3"),
-	## didnt like this one :C
-	## preload("res://assets/audio/music/hashir/let-the-games-begin-21858.mp3"),
-	#preload("res://assets/audio/music/hashir/synth-city-80x27s-loop-167222.mp3"),
-	#preload("res://assets/audio/music/hashir/to-the-death-159171.mp3")
-#]
-#
-#const SHOOT : AudioStream = preload("res://assets/audio/shoot.ogg")
-#const NO_AMMO : AudioStream = preload("res://assets/audio/no_ammo.ogg")
-#const BULLET_REFILLED : AudioStream = preload("res://assets/audio/bullet_refilled3.ogg")
-
 @export var jump_sfx_array : Array[AudioStream] = [
 	preload("res://assets/audio/cartoon-jump1.mp3"),
 	preload("res://assets/audio/cartoon-jump2.mp3"),
 	preload("res://assets/audio/cartoon-jump3.mp3"),
 	preload("res://assets/audio/cartoon-jump4.mp3"),
 	preload("res://assets/audio/cartoon-jump5.mp3")
+]
+
+@export var land_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/land1.mp3"),
+	preload("res://assets/audio/land2.mp3"),
+	preload("res://assets/audio/land3.mp3"),
+	preload("res://assets/audio/land4.mp3"),
+	preload("res://assets/audio/land5.mp3"),
+	preload("res://assets/audio/land6.mp3")
+]
+
+@export var groundpound_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/groundpound1.mp3"),
+	preload("res://assets/audio/groundpound2.mp3"),
+	preload("res://assets/audio/groundpound3.mp3"),
+	preload("res://assets/audio/groundpound4.mp3"),
+	preload("res://assets/audio/groundpound5.mp3"),
+	preload("res://assets/audio/groundpound6.mp3")
+]
+
+@export var level_end_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/level-end1.mp3"),
+	preload("res://assets/audio/level-end2.mp3"),
+	preload("res://assets/audio/level-end3.mp3"),
+	preload("res://assets/audio/level-end4.mp3"),
+	preload("res://assets/audio/level-end5.mp3"),
+	preload("res://assets/audio/level-end6.mp3")
+]
+
+@export var light_refill_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/light-refill1.mp3"),
+	preload("res://assets/audio/light-refill2.mp3"),
+	preload("res://assets/audio/light-refill3.mp3"),
+	preload("res://assets/audio/light-refill4.mp3"),
+	preload("res://assets/audio/light-refill5.mp3"),
+	preload("res://assets/audio/light-refill6.mp3")
+]
+
+@export var player_dead_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/player-dead1.mp3"),
+	preload("res://assets/audio/player-dead2.mp3"),
+	preload("res://assets/audio/player-dead3.mp3"),
+	preload("res://assets/audio/player-dead4.mp3"),
+	preload("res://assets/audio/player-dead5.mp3"),
+	preload("res://assets/audio/player-dead6.mp3")
+]
+
+@export var spike_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/spike1.mp3"),
+	preload("res://assets/audio/spike2.mp3"),
+	preload("res://assets/audio/spike3.mp3"),
+	preload("res://assets/audio/spike4.mp3"),
+	preload("res://assets/audio/spike5.mp3"),
+	preload("res://assets/audio/spike6.mp3")
+]
+
+@export var spring_sfx_array : Array[AudioStream] = [
+	preload("res://assets/audio/spring1.mp3"),
+	preload("res://assets/audio/spring2.mp3"),
+	preload("res://assets/audio/spring3.mp3"),
+	preload("res://assets/audio/spring4.mp3"),
+	preload("res://assets/audio/spring5.mp3"),
+	preload("res://assets/audio/spring6.mp3"),
+	preload("res://assets/audio/spring7.mp3")
 ]
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer

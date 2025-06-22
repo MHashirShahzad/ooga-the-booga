@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://banqrmtj8owcx"]
+[gd_scene load_steps=20 format=3 uid="uid://banqrmtj8owcx"]
 
+[ext_resource type="Script" uid="uid://bwqx1ejm8qcx6" path="res://levels/level_4.gd" id="1_47a12"]
 [ext_resource type="PackedScene" uid="uid://ca4iw0wk4yhcj" path="res://player/player.tscn" id="1_cc5tm"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_mj76i"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_mdw0g"]
@@ -20,7 +21,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lw0yu"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_47a12"]
 polygon = PackedVector2Array(-1254, -1352, -1165.44, -1399.27, -580, -1440, -524, -1512, -301, -1524, -100, -1498, 78, -1544, 213, -1497, 295, -1349, 228, -1180, 65, -1214, 20, -1210, 46.5823, -1031.36, 310, -886, 759, -862, 1025, -725, 1353, -582, 1441, -222, 1537, 28, 1284.94, 73.723, 1183, 17, 1048, 69, 1014, 124, 832.757, 156.609, 830, 458, 870, 723, 791, 1161, 653.586, 1462.33, 726, 1453, 765, 1619, 815, 1619, 809, 1445, 1159, 1414, 1448, 1450, 1504, 1676, 1334, 1920, 1043, 2011, 996, 1891, 921, 1894, 903, 2029, 571, 1985, 336, 1861, 220, 1664, 337, 1448, 484, 1091, 587, 720, 533, 466, 445, 109, 612, -148, 1149, -326, 1071, -416, 795, -383, 570, -531, 163, -498, -146, -592, -269, -899, -201, -1209, -994, -1229, -1041, -1227, -1042, -286, -1287, -320, -1913, -297, -2322, -368, -2391, -541, -2333.77, -697.902, -1923, -766, -1514, -716, -1368, -743, -1319.1, -882.393, -1284.41, -1242.46)
 
 [sub_resource type="Animation" id="Animation_lw0yu"]
@@ -140,6 +141,20 @@ tracks/4/keys = {
 "points": PackedFloat32Array(159, -0.25, 0, 0.25, 0, 396, -0.25, 0, 0.25, 0, 159, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.415191, 1)
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_spike_audio"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lw0yu"]
 _data = {
@@ -148,6 +163,7 @@ _data = {
 }
 
 [node name="Level4" type="Node2D" groups=["level"]]
+script = ExtResource("1_47a12")
 
 [node name="LevelEssentials" type="Node2D" parent="."]
 
@@ -214,7 +230,7 @@ invert_border = 1000.0
 polygon = PackedVector2Array(-1254, -1352, -1165.44, -1399.27, -580, -1440, -524, -1512, -301, -1524, -100, -1498, 78, -1544, 213, -1497, 295, -1349, 228, -1180, 65, -1214, 20, -1210, 46.5823, -1031.36, 310, -886, 759, -862, 1025, -725, 1353, -582, 1441, -222, 1537, 28, 1284.94, 73.723, 1183, 17, 1048, 69, 1014, 124, 832.757, 156.609, 830, 458, 870, 723, 791, 1161, 653.586, 1462.33, 726, 1453, 765, 1619, 815, 1619, 809, 1445, 1159, 1414, 1448, 1450, 1504, 1676, 1334, 1920, 1043, 2011, 996, 1891, 921, 1894, 903, 2029, 571, 1985, 336, 1861, 220, 1664, 337, 1448, 484, 1091, 587, 720, 533, 466, 445, 109, 612, -148, 1149, -326, 1071, -416, 795, -383, 570, -531, 163, -498, -146, -592, -269, -899, -201, -1209, -994, -1229, -1041, -1227, -1042, -286, -1287, -320, -1913, -297, -2322, -368, -2391, -541, -2333.77, -697.902, -1923, -766, -1514, -716, -1368, -743, -1319.1, -882.393, -1284.41, -1242.46)
 
 [node name="LightOccluder2D" parent="World/LevelBuilder" index="2"]
-occluder = SubResource("OccluderPolygon2D_lw0yu")
+occluder = SubResource("OccluderPolygon2D_47a12")
 
 [node name="Label" type="Label" parent="World"]
 z_index = -2

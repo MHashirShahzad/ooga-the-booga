@@ -243,8 +243,7 @@ position = Vector2(3397, 3335)
 pull_velocity = -1500.0
 
 [node name="PointLight2D" parent="World/LightPuller" index="4"]
-position = Vector2(6, 150)
-energy = 3.0
+position = Vector2(4, 131)
 texture_scale = 1.58
 
 [node name="GuidingArrow2" parent="World" instance=ExtResource("10_lt1p8")]

@@ -88,6 +88,7 @@ func _physics_process(delta: float) -> void:
 			is_gliding = false
 			is_ground_pounding = false
 			squash()
+			SFXManager.play_FX(SFXManager.land_sfx_array.pick_random(), 3, 1, 1)
 		
 		if jump_buffer_timer > 0:
 			jump()
@@ -174,6 +175,7 @@ func handle_input():
 		if is_being_pulled: return
 		
 		is_ground_pounding = true
+		SFXManager.play_FX(SFXManager.groundpound_sfx_array.pick_random(), 3, 1, 1)
 		if self.velocity.y >= ground_pound_velocity:
 			return
 		self.velocity.y = ground_pound_velocity
@@ -213,7 +215,7 @@ func ground_pound_cancel() -> void:
 	tween.kill()
 
 func jump():
-	SFXManager.play_FX(SFXManager.jump_sfx_array.pick_random(),.4, 1,1)
+	SFXManager.play_FX(SFXManager.jump_sfx_array.pick_random(), -10, 1, 1)
 	jump_count = jump_count + 1
 	
 	if super_jump_timer > 0:
@@ -260,6 +262,8 @@ func squash_and_stretch_finished():
 	#tween.tween_property(silhouette_sprite, "scale",Vector2(1,1), .1).set_trans(Tween.TRANS_QUAD)
 
 func die():
+	if is_dead: return
+	SFXManager.play_FX(SFXManager.player_dead_sfx_array.pick_random(), 3, 1, 1)
 	is_dead = true
 	ani_player.play("die")
 	TransitionManager.transition_scene_file(get_tree().current_scene.scene_file_path)
